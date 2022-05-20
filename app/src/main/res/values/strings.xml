@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="add_recipe">Add Recipe</string>
+    <string name="find_a_recipe">Find A Recipe</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="view_book">View Book</string>
+    <string name="smth">C:\\Users\\riomc\\OneDrive\\Documents\\recipes.json</string>
+</resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/back_butt"
+        android:onClick="BacktoMain"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.975"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textSize="60sp"
+        android:layout_width="395dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="700dp"
+        android:background="@color/blue"
+        android:text="@string/add_recipe"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="305dp"
+        android:layout_height="332dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="244dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="42dp"
+        android:text="Camera view"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="148dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="123dp"
+        android:layout_marginBottom="194dp"
+        android:backgroundTint="@color/blue"
+        android:text="Enter"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
