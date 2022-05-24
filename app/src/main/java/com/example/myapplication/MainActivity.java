@@ -552,7 +552,7 @@ public class MainActivity extends AppCompatActivity {
         }
         try {
             String[] bookentry = new String[100];
-            bookentries = cards + 1;
+           // bookentries = cards + 1;
             System.out.println(bookentries);
             for (int i = 0; i < bookentries; ++i) {
                 String name = bookArray.getJSONObject(i).getString("recipeName");
@@ -629,7 +629,7 @@ public class MainActivity extends AppCompatActivity {
             text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             text.setGravity(Gravity.CENTER);
             text.setTextSize(25);
-            text.setText(recipenames[cards]);
+            text.setText(bookRecipeNames[cards]);
             text.setMinimumWidth((width - 100) / 2);
             text.setMinimumHeight((height - 40) / 10);
 
