@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     public static int co = 0;
     public static String path;
     String[][][] recipes = new String[20][4][20];
-    String[] recipenames = new String[20];
+   public static String[] recipenames = new String[20];
     int[][] percent = new int[2][20];
     String[][][] book = new String[100][4][100];
     JSONArray bookArray = new JSONArray();
@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.welcomescreen);
 
+
         try {
           //  String yuh = readFromFile();
 
@@ -83,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < jArray.length(); ++i) {
                 String name = jArray.getJSONObject(i).getString("recipeName");
                 recipenames[i] = name;
+                System.out.println(recipenames[i]);
+                System.out.println("name " + name);
 
 
                 JSONArray ingredients = jArray.getJSONObject(i).getJSONArray("recipeIngredients");
@@ -135,8 +138,8 @@ public class MainActivity extends AppCompatActivity {
         String ret = "";
         InputStream inputStream = null;
         try {
-            inputStream = openFileInput("book.json");
-
+            inputStream = this.openFileInput("book.json");
+            System.out.println("yuh");
             if (inputStream != null) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -234,24 +237,24 @@ public class MainActivity extends AppCompatActivity {
 //            ex.printStackTrace();
 //            return null;
 //        }
-
-
-    public String readJSONFromAsset2() {
-        String json = null;
-        try {
-            InputStream is = getAssets().open("book.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, StandardCharsets.UTF_8);
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
-    }
+//
+//
+//    public String readJSONFromAsset2() {
+//        String json = null;
+//        try {
+//            InputStream is = getAssets().open("book.json");
+//            int size = is.available();
+//            byte[] buffer = new byte[size];
+//            is.read(buffer);
+//            is.close();
+//            json = new String(buffer, StandardCharsets.UTF_8);
+//
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//            return null;
+//        }
+//        return json;
+//    }
 
     public String readJSONFromAsset() {
         String json = null;
@@ -412,6 +415,7 @@ public class MainActivity extends AppCompatActivity {
                 text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 text.setGravity(Gravity.CENTER);
                 text.setTextSize(25);
+                System.out.println("percent " + percent[0][x]);
                 text.setText(recipenames[percent[0][x]]);
                 text.setPadding(10, 10, 10, 10);
                 layout.addView(text);
