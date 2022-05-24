@@ -20,14 +20,22 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static File bookfile;
+    public static int co = 0;
+    public static String path;
     String[][][] recipes = new String[20][4][20];
     String[] recipenames = new String[20];
     int[][] percent = new int[2][20];
@@ -35,11 +43,13 @@ public class MainActivity extends AppCompatActivity {
     JSONArray bookArray = new JSONArray();
     String[] bookRecipeNames = new String[20];
     int counter = 0;
+    String[] bookentry = new String[100];
     int counter2 = 0;
     String[] items = new String[100];
     int count = 0;
     int yee = 0;
     int id = 0;
+   int recipeId = 0;
     int height = 0;
     int width = 0;
     int cards = 0;
@@ -49,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        co++;
+        //File book;
+        initialiseJSON();
         height = this.getResources().getDisplayMetrics().heightPixels;
         width = this.getResources().getDisplayMetrics().widthPixels;
         super.onCreate(savedInstanceState);
@@ -56,9 +69,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.welcomescreen);
 
         try {
-            bookArray = new JSONArray(readJSONFromAsset2());
+          //  String yuh = readFromFile();
+
+
+          //  System.out.println("string from file: " + yuh);
+            bookArray = new JSONArray(readFromFile());
             bookentries = bookArray.length();
+            System.out.println("book entries: " + bookentries);
             System.out.println(bookArray);
+//            System.out.println(bookArray);
             JSONArray jArray = new JSONArray(readJSONFromAsset());
 
             for (int i = 0; i < jArray.length(); ++i) {
@@ -79,16 +98,67 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
+            for (int i = 0; i < bookentries; ++i) {
+                try {
+                    String recipename = bookArray.getJSONObject(i).getString("recipeName");
+                    System.out.println(recipename);
+                    recipeId = bookArray.getJSONObject(i).getInt("recipeId");
+                    bookentry[i] = recipename;
+                    bookRecipeNames[i] = recipename;
+                } catch (Exception e) {
+//                    System.out.println("stupid");
+                }
 
+//                System.out.println(bookentry[i]);
 
+//                JSONArray ingredients = bookArray.getJSONObject(i).getJSONArray("recipeIngredients");
+//                JSONArray quantities = bookArray.getJSONObject(i).getJSONArray("quantities");
+//                for (int j = 0; j < ingredients.length(); j++) {
+//                    String ingredient = ingredients.getString(j);
+//                    book[i][0][j] = ingredient;
+////                    System.out.println("(book[i][0][j] " + book[i][0][j]);
+//                    String quantity = quantities.getString(j);
+//                    book[i][1][j] = quantity;
+////                    System.out.println("book[i][1][j] " + book[i][1][j]);
+//
+//                }
+
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
 
-//
+
+    private String readFromFile() {
+
+        String ret = "";
+        InputStream inputStream = null;
+        try {
+            inputStream = openFileInput("book.json");
+
+            if (inputStream != null) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+
+                while ((receiveString = bufferedReader.readLine()) != null) {
+                    stringBuilder.append(receiveString);
+                }
+
+                ret = stringBuilder.toString();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ret;
     }
 
     public void Welcome(View view) {
+        System.out.println("co " + co);
         setContentView(R.layout.mainscreen);
         TextView text = findViewById(R.id.recipeFinder);
         // text.setWidth(width);
@@ -96,22 +166,75 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public String readJSONFromAsset() {
-        String json = null;
-        try {
-            InputStream is = getAssets().open("recipes.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, StandardCharsets.UTF_8);
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
+    public String initialiseJSON() {
+//        File bookfile;
+//
+        bookfile = this.getFileStreamPath("book.json");
+////        System.out.println(bookfile);
+//
+        if (!bookfile.exists()) {
+            bookfile = new File(this.getFilesDir(), "book.json");
+            bookfile.setWritable(true);
         }
-        return json;
+        return null;
     }
+
+//        String line = null;
+//        String path = null;
+//        try {
+//            FileReader fileReader = new FileReader(bookfile);
+//            StringBuffer output = new StringBuffer();
+//            BufferedReader bufferedReader = new BufferedReader(fileReader);
+//            while ((line = bufferedReader.readLine()) != null) {
+//                output.append(line + "\n");
+//            }
+//            String response = output.toString();
+//            System.out.println("line: " + line);
+//
+////            String appendedString = line + "boo";
+////            System.out.println(appendedString);
+////            path = bookfile.getPath();
+//            FileWriter fileWriter = new FileWriter(bookfile);
+//            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+//            bufferedWriter.write("{}");
+//            System.out.println(bufferedWriter);
+//            bufferedWriter.close();
+//
+////            try {
+////                // InputStream is = bufferedReader.readLine();
+//////                int size = is.available();
+//////                byte[] buffer = new byte[size];
+//////                is.read(buffer);
+//////                is.close();
+//////                String json = new String(buffer, StandardCharsets.UTF_8);
+////
+//////            } catch (IOException ex) {
+//////                ex.printStackTrace();
+//////                return null;
+//////            }
+//            //            System.out.println(line3);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+////        System.out.println("no");
+//
+//        return path;
+//    }
+//        try {
+//            InputStream is = getAssets().open("recipes.json");
+//            int size = is.available();
+//            byte[] buffer = new byte[size];
+//            is.read(buffer);
+//            is.close();
+//            json = new String(buffer, StandardCharsets.UTF_8);
+//
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//            return null;
+//        }
+
 
     public String readJSONFromAsset2() {
         String json = null;
@@ -130,6 +253,22 @@ public class MainActivity extends AppCompatActivity {
         return json;
     }
 
+    public String readJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getAssets().open("recipes.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, StandardCharsets.UTF_8);
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
 
     public void FindARecipe(View view) {
         setContentView(R.layout.findarecipe);
@@ -252,7 +391,7 @@ public class MainActivity extends AppCompatActivity {
                 card.setUseCompatPadding(true);
                 card.setMinimumHeight((height - 50) / 3);
 
-                System.out.println(colcount);
+//                System.out.println(colcount);
                 if (colcount == 1) {
 
                     card.setLeft((width / 2) + 300);
@@ -301,7 +440,7 @@ public class MainActivity extends AppCompatActivity {
                         ImageButton yo = findViewById(R.id.imageButton4);
                         yo.bringToFront();
                         TextView title = findViewById(R.id.textView10);
-                        System.out.println(recipenames[percent[0][finalX]]);
+//                        System.out.println(recipenames[percent[0][finalX]]);
                         String name = String.valueOf(recipenames[percent[0][finalX]]);
                         title.setText(name);
 
@@ -314,7 +453,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void AddToBook(View view) {
         buttoncheck = 1;
-        System.out.println("AddToBook");
+//        System.out.println("AddToBook");
         count++;
         bookentries++;
         cards++;
@@ -322,34 +461,65 @@ public class MainActivity extends AppCompatActivity {
             // JSONArray bookArray = new JSONArray(readJSONFromAsset2());
             JSONObject obj = new JSONObject();
             obj.put("recipeName", recipenames[yee]);
-            System.out.println("recipe name: " + recipenames[yee]);
+//            System.out.println("recipe name: " + recipenames[yee]);
             obj.put("recipeId", id);
-            System.out.println("recipeId: " + id);
-            // System.out.println(recipenames[yee]);
-            bookArray.put(obj);
+//            System.out.println("recipeId: " + id);
+//            // System.out.println(recipenames[yee]);
+
             JSONArray ingredients = new JSONArray();
             //    JSONObject ingredientobj = new JSONObject();
 
             int ingredientlist = recipes[yee][0].length;
+            System.out.println("ingredient list " + ingredientlist);
             JSONObject ingredient = new JSONObject();
-            System.out.println(ingredientlist);
+//            System.out.println(ingredientlist);
+            // adding ingredeints
             for (int counter3 = 0; counter3 < recipes[yee][0].length; counter3++) {
+//                System.out.println("book[yee][0][counter3] " + book[yee][0][counter3]);
+//                System.out.println("recipes[yee][0][counter3] " + recipes[yee][0][counter3]);
+                if (recipes[yee][0][counter3] != null) {
+                    //  System.out.println("inside while");
+                    book[yee][0][counter3] = recipes[yee][0][counter3];
+                    ingredient.put("recipeIngredients", recipes[yee][0][counter3]);
+//                System.out.println("recipe ingredient: " + recipes[yee][0][counter3]);
+                    ingredients.put(recipes[yee][0][counter3]);
+//                    System.out.println("ingredients: " + ingredients);
+                }
 
-                book[yee][0][counter3] = recipes[yee][0][counter3];
-                ingredient.put("recipeIngredients", recipes[yee][0][counter3]);
-                System.out.println("recipe ingredient: " + recipes[yee][0][counter3]);
-                ingredients.put(recipes[yee][0][counter3]);
-                bookArray.put(ingredients);
-                System.out.println(cards);
+
+//                System.out.println(cards);
                 bookRecipeNames[cards - 1] = recipenames[yee];
-              //  System.out.println("bookrecipenames: " + bookRecipeNames[cards]);
-                System.out.println(ingredients);
+
+//                //  System.out.println("bookrecipenames: " + bookRecipeNames[cards]);
+//                System.out.println(ingredients);
             }
-            //  System.out.println();
-//            System.out.println(obj);
+            obj.put("recipeIngredients", ingredients);
+            bookArray.put(obj);
+            System.out.println(bookArray);
+//            //  System.out.println();
+////            System.out.println(obj);
 
-//            System.out.println(jArray);
+////            System.out.println(jArray);\
+            try {
+                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput("book.json", this.MODE_PRIVATE));
+                outputStreamWriter.write(String.valueOf(bookArray));
 
+                outputStreamWriter.close();
+            } catch (IOException e) {
+
+//           FileWriter fileWriter = new FileWriter(bookfile);
+//            System.out.println("added to book| fileWriter" + fileWriter);
+//            System.out.println("added to book| bookfile: " + bookfile);
+//            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+//            System.out.println("added to book| bufferedWriter: " + bufferedWriter);
+//            bufferedWriter.write(obj.toString());
+//            bufferedWriter.write("");
+//            System.out.println("added to book | obj.toString() " + obj);
+//        }
+//        } catch (JSONException | IOException e) {
+//            e.printStackTrace();
+//        }
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -367,11 +537,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void viewBook(View view) {
-        System.out.println("viewBook");
+//        System.out.println("viewBook");
         setContentView(R.layout.viewbook);
         ImageButton button = findViewById(R.id.BackFromBook);
         if (buttoncheck == 1) {
-
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     setContentView(R.layout.recipe);
@@ -384,6 +553,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             String[] bookentry = new String[100];
             bookentries = cards + 1;
+            System.out.println(bookentries);
             for (int i = 0; i < bookentries; ++i) {
                 String name = bookArray.getJSONObject(i).getString("recipeName");
 
@@ -391,30 +561,30 @@ public class MainActivity extends AppCompatActivity {
                 bookRecipeNames[i] = name;
 
 
-                System.out.println(bookentry[i]);
+//                System.out.println(bookentry[i]);
 
-                JSONArray ingredients = bookArray.getJSONObject(i).getJSONArray("recipeIngredients");
-                JSONArray quantities = bookArray.getJSONObject(i).getJSONArray("quantities");
+//                JSONArray ingredients = bookArray.getJSONObject(i).getJSONArray("recipeIngredients");
+//                JSONArray quantities = bookArray.getJSONObject(i).getJSONArray("quantities");
 
-                for (int j = 0; j < ingredients.length(); j++) {
-                    String ingredient = ingredients.getString(j);
-                    if (ingredient == null) {
-                        ingredient = " ";
-                        if (ingredient != " ") {
-                            book[i][0][j] = ingredient;
-                        }
-
-                    }
-
-
-                    System.out.println("(book[i][0][j] " + book[i][0][j]);
-                    String quantity = quantities.getString(j);
-                    book[i][1][j] = quantity;
-                    System.out.println("book[i][1][j] " + book[i][1][j]);
+//                for (int j = 0; j < ingredients.length(); j++) {
+//                    String ingredient = ingredients.getString(j);
+//                    if (ingredient == null) {
+//                        ingredient = " ";
+//                        if (ingredient != " ") {
+//                            book[i][0][j] = ingredient;
+//                        }
+//
+//                    }
+//
+//
+////                    System.out.println("(book[i][0][j] " + book[i][0][j]);
+//                    String quantity = quantities.getString(j);
+//                    book[i][1][j] = quantity;
+//                    System.out.println("book[i][1][j] " + book[i][1][j]);
 
                 }
 
-            }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -438,9 +608,9 @@ public class MainActivity extends AppCompatActivity {
             bookcard.setClickable(true);
             bookcard.callOnClick();
             GridLayout.Spec ro = GridLayout.spec(row);
-            System.out.println("row: " + row);
+//            System.out.println("row: " + row);
             GridLayout.Spec col = GridLayout.spec(column);
-            System.out.println(" column: " + column);
+//            System.out.println(" column: " + column);
             //   grid.getUseDefaultMargins();
             GridLayout.LayoutParams gridpos = new GridLayout.LayoutParams(ro, col);
             bookcard.setMinimumWidth((width - 100) / 2);
@@ -455,7 +625,7 @@ public class MainActivity extends AppCompatActivity {
             TextView text = new TextView(this);
             TextView p = new TextView(this);
             text.setTextColor(getResources().getColor(R.color.black));
-            System.out.println("book recipe name in added book mod" + bookRecipeNames[cards]);
+//            System.out.println("book recipe name in added book mod" + bookRecipeNames[cards]);
             text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             text.setGravity(Gravity.CENTER);
             text.setTextSize(25);
@@ -485,8 +655,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void AddedToBook(View view) {
-        System.out.println("bookrecipenames1 " + bookRecipeNames[1]);
-        System.out.println("added to book");
+//        System.out.println("bookrecipenames1 " + bookRecipeNames[1]);
+//        System.out.println("added to book");
 
         try {
             String[] bookentry = new String[100];
@@ -497,20 +667,20 @@ public class MainActivity extends AppCompatActivity {
                     bookentry[i] = recipename;
                     bookRecipeNames[i] = recipename;
                 } catch (Exception e) {
-                    System.out.println("stupid");
+//                    System.out.println("stupid");
                 }
 
-                System.out.println(bookentry[i]);
+//                System.out.println(bookentry[i]);
 
                 JSONArray ingredients = bookArray.getJSONObject(i).getJSONArray("recipeIngredients");
                 JSONArray quantities = bookArray.getJSONObject(i).getJSONArray("quantities");
                 for (int j = 0; j < ingredients.length(); j++) {
                     String ingredient = ingredients.getString(j);
                     book[i][0][j] = ingredient;
-                    System.out.println("(book[i][0][j] " + book[i][0][j]);
+//                    System.out.println("(book[i][0][j] " + book[i][0][j]);
                     String quantity = quantities.getString(j);
                     book[i][1][j] = quantity;
-                    System.out.println("book[i][1][j] " + book[i][1][j]);
+//                    System.out.println("book[i][1][j] " + book[i][1][j]);
 
                 }
 
@@ -551,9 +721,9 @@ public class MainActivity extends AppCompatActivity {
             bookcard.setClickable(true);
             bookcard.callOnClick();
             GridLayout.Spec ro = GridLayout.spec(row);
-            System.out.println("row: " + row);
+//            System.out.println("row: " + row);
             GridLayout.Spec col = GridLayout.spec(column);
-            System.out.println(" column: " + column);
+//            System.out.println(" column: " + column);
             //   grid.getUseDefaultMargins();
             GridLayout.LayoutParams gridpos = new GridLayout.LayoutParams(ro, col);
             bookcard.setMinimumWidth((width - 100) / 2);
@@ -568,7 +738,7 @@ public class MainActivity extends AppCompatActivity {
             TextView text = new TextView(this);
             TextView p = new TextView(this);
             text.setTextColor(getResources().getColor(R.color.black));
-            System.out.println("book recipe name in added book mod" + bookRecipeNames[cards]);
+//            System.out.println("book recipe name in added book mod" + bookRecipeNames[cards]);
             text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             text.setGravity(Gravity.CENTER);
             text.setTextSize(25);
