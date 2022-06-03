@@ -277,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
     public void FindARecipe(View view) {
         setContentView(R.layout.findarecipe);
         TextView text = findViewById(R.id.recipeFinder);
-        text.setWidth(width);
+        text.setMinWidth(width/3);
         //  TextView textview = findViewById(R.id.recipeFinder2);
         //  textview.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
