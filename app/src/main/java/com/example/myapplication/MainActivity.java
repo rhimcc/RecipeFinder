@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.welcomescreen);
-        Button welcome = (Button) findViewById(R.id.Welcome);
+        Button welcome = findViewById(R.id.Welcome);
         welcome.setHeight(height - 1200);
 //        RelativeLayout.LayoutParams layoutParams = new LayoutPara
 //        welcome.setLayoutParams((56/1080 * width), 100);
@@ -440,17 +440,59 @@ public class MainActivity extends AppCompatActivity {
                     id = yee + 1;
                     setContentView(R.layout.recipescreen);
                     ImageButton yo = findViewById(R.id.imageButton4);
+                   LinearLayout Ingredientlist = findViewById(R.id.ingredientlist);
+                    LinearLayout qtylist = findViewById(R.id.qtylist);
+                    LinearLayout method = findViewById(R.id.method);
+                    JSONArray jArray = null;
+                    try {
+                        jArray = new JSONArray(readJSONFromAsset());
+
+                          String recipeName = jArray.getJSONObject(finalX).getString("recipeName");
+                            JSONArray ingredients = jArray.getJSONObject(finalX).getJSONArray("recipeIngredients");
+                            JSONArray quantities = jArray.getJSONObject(finalX).getJSONArray("displayqty");
+                            for (int j = 0; j < ingredients.length(); j++) {
+                                String ingredient = ingredients.getString(j);
+                                TextView textView = new TextView(this);
+                        //        textView.setBackgroundResource(R.drawable.background);
+                                textView.setTextSize(20);
+                                textView.setText(ingredient);
+                                Ingredientlist.addView(textView);
+                                TextView qtytext = new TextView(this);
+                                qtytext.setTextSize(20);
+                        //        qtytext.setBackgroundResource(R.drawable.background);
+
+                                String quantity = quantities.getString(j);
+                                qtytext.setText(quantity);
+                                qtylist.addView(qtytext);
+                           }
+                        JSONArray methodarray = jArray.getJSONObject(finalX).getJSONArray("method");
+                            for (int j = 0; j < methodarray.length(); j++){
+//                                method.setPadding(20, 20, 20, 40);
+                                String methodstep = methodarray.getString(j);
+                                TextView textView = new TextView(this);
+                                textView.setTextSize(20);
+                                textView.setText(methodstep);
+//                                textView.setPadding(10,10,10,10);
+                                method.addView(textView);
+                            }
+                        TextView title = findViewById(R.id.recipeName);
+                            title.setText(recipeName);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+
+
+
                     yo.bringToFront();
-                    TextView title = findViewById(R.id.textView10);
-//                        System.out.println(recipenames[percent[0][finalX]]);
-                    String name = String.valueOf(recipenames[percent[0][finalX]]);
-                    title.setText(name);
 
 
-                });
+                }
             }
-        }
+
+                );}
     }
+}
+
 
     public void AddToBook(View view) {
         buttoncheck = 1;
