@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
@@ -7,44 +8,59 @@ android:layout_height="match_parent"
 android:background="@color/white"
 tools:context=".MainActivity">
 
-<TextView
-    android:id="@+id/textView"
-    android:layout_width="310dp"
-    android:layout_height="295dp"
-    android:layout_marginTop="56dp"
-    android:text="RECIPE FINDER"
-    android:textColor="@color/blue"
-    android:textSize="90sp"
-    app:layout_constraintHorizontal_bias="0.495"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="310dp"
+        android:layout_height="295dp"
+        android:layout_above="@+id/Welcome"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="150dp"
+        android:text="RECIPE FINDER"
+        android:textColor="@color/blue"
+        android:textSize="90sp"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<ImageView
-    android:id="@+id/Logo"
-    android:layout_width="278dp"
-    android:layout_height="565dp"
-    android:contentDescription="Logo"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:srcCompat="@drawable/logo_no_words" />
+    <ImageView
+        android:id="@+id/Logo"
+        android:layout_width="278dp"
+        android:layout_height="451dp"
+        android:layout_above="@+id/Welcome"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="-98dp"
+        android:contentDescription="Logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_no_words" />
 
-<Button
-    android:id="@+id/Welcome"
-    android:layout_width="277dp"
-    android:layout_height="146dp"
-    android:backgroundTint="@color/blue"
-    android:foregroundTint="@color/blue"
-    android:onClick="Welcome"
-    android:text="WELCOME"
-    android:textSize="45sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.858"
-    tools:shadowColor="@color/blue" />
+    <Button
+        android:id="@+id/Welcome"
+        android:layout_width="1000dp"
+        android:layout_height="146dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="225dp"
+        android:backgroundTint="@color/blue"
+        android:foregroundTint="@color/blue"
+        android:onClick="Welcome"
+        android:text="WELCOME"
+        android:textSize="45sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.858"
+        tools:shadowColor="@color/blue" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
@@ -22,7 +23,6 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static File bookfile;
     public static int co = 0;
-    public static String path;
     String[][][] recipes = new String[20][4][20];
    public static String[] recipenames = new String[20];
     int[][] percent = new int[2][20];
@@ -54,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
     int width = 0;
     int cards = 0;
     int bookentries = 0;
-    String[][] methods = new String[2][20];
     int buttoncheck = 0;
 
     @Override
@@ -67,6 +65,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.welcomescreen);
+        Button welcome = (Button) findViewById(R.id.Welcome);
+        welcome.setHeight(height - 1200);
+//        RelativeLayout.LayoutParams layoutParams = new LayoutPara
+//        welcome.setLayoutParams((56/1080 * width), 100);
+    //    welcome.setMaxWidth(width - 1200);
+        welcome.setMinHeight(height - 1000);
 
 
         try {
@@ -134,16 +138,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     private String readFromFile() {
-
+        System.out.println("Height " + height );
+        System.out.println("width " + width);
         String ret = "";
-        InputStream inputStream = null;
+        InputStream inputStream;
         try {
             inputStream = this.openFileInput("book.json");
             System.out.println("yuh");
             if (inputStream != null) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                String receiveString = "";
+                String receiveString;
                 StringBuilder stringBuilder = new StringBuilder();
 
                 while ((receiveString = bufferedReader.readLine()) != null) {
@@ -152,8 +157,6 @@ public class MainActivity extends AppCompatActivity {
 
                 ret = stringBuilder.toString();
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -163,13 +166,12 @@ public class MainActivity extends AppCompatActivity {
     public void Welcome(View view) {
         System.out.println("co " + co);
         setContentView(R.layout.mainscreen);
-        TextView text = findViewById(R.id.recipeFinder);
         // text.setWidth(width);
 
 
     }
 
-    public String initialiseJSON() {
+    public void initialiseJSON() {
 //        File bookfile;
 //
         bookfile = this.getFileStreamPath("book.json");
@@ -179,7 +181,6 @@ public class MainActivity extends AppCompatActivity {
             bookfile = new File(this.getFilesDir(), "book.json");
             bookfile.setWritable(true);
         }
-        return null;
     }
 
 //        String line = null;
@@ -257,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     public String readJSONFromAsset() {
-        String json = null;
+        String json;
         try {
             InputStream is = getAssets().open("recipes.json");
             int size = is.available();
@@ -372,9 +373,7 @@ public class MainActivity extends AppCompatActivity {
         int[] array = new int[20];
         GridLayout grid = findViewById(R.id.gridLayout);
 
-        for (int i = 0; i < 20; i++) {
-            array[i] = percent[1][i];
-        }
+        System.arraycopy(percent[1], 0, array, 0, 20);
         Arrays.sort(new int[][]{array}, Collections.reverseOrder());
         int x = 0;
         for (int rowcount = 0; rowcount < 10; rowcount++) {
@@ -436,20 +435,18 @@ public class MainActivity extends AppCompatActivity {
                 int finalX = x - 1;
 
                 //yee = finalX;
-                card.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View view) {
-                        yee = finalX;
-                        id = yee + 1;
-                        setContentView(R.layout.recipescreen);
-                        ImageButton yo = findViewById(R.id.imageButton4);
-                        yo.bringToFront();
-                        TextView title = findViewById(R.id.textView10);
+                card.setOnClickListener(view1 -> {
+                    yee = finalX;
+                    id = yee + 1;
+                    setContentView(R.layout.recipescreen);
+                    ImageButton yo = findViewById(R.id.imageButton4);
+                    yo.bringToFront();
+                    TextView title = findViewById(R.id.textView10);
 //                        System.out.println(recipenames[percent[0][finalX]]);
-                        String name = String.valueOf(recipenames[percent[0][finalX]]);
-                        title.setText(name);
+                    String name = String.valueOf(recipenames[percent[0][finalX]]);
+                    title.setText(name);
 
 
-                    }
                 });
             }
         }
@@ -505,7 +502,7 @@ public class MainActivity extends AppCompatActivity {
 
 ////            System.out.println(jArray);\
             try {
-                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput("book.json", this.MODE_PRIVATE));
+                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput("book.json", MODE_PRIVATE));
                 outputStreamWriter.write(String.valueOf(bookArray));
 
                 outputStreamWriter.close();
@@ -545,12 +542,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.viewbook);
         ImageButton button = findViewById(R.id.BackFromBook);
         if (buttoncheck == 1) {
-            button.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View view) {
-                    setContentView(R.layout.recipe);
-
-                }
-            });
+            button.setOnClickListener(view1 -> setContentView(R.layout.recipe));
 
 
         }
@@ -727,8 +719,6 @@ public class MainActivity extends AppCompatActivity {
             GridLayout.Spec ro = GridLayout.spec(row);
 //            System.out.println("row: " + row);
             GridLayout.Spec col = GridLayout.spec(column);
-//            System.out.println(" column: " + column);
-            //   grid.getUseDefaultMargins();
             GridLayout.LayoutParams gridpos = new GridLayout.LayoutParams(ro, col);
             bookcard.setMinimumWidth((width - 100) / 2);
             bookcard.setUseCompatPadding(true);
