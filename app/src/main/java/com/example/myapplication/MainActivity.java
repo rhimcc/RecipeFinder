@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     int counter = 0;
     String[] bookentry = new String[100];
     int counter2 = 0;
+    String[] methodsteps = new String[100];
     String[] items = new String[100];
     int count = 0;
     int yee = 0;
@@ -193,13 +194,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String readFromFile() {
-        System.out.println("Height " + height);
-        System.out.println("width " + width);
+//        System.out.println("Height " + height);
+//        System.out.println("width " + width);
         String ret = "";
         InputStream inputStream;
         try {
             inputStream = this.openFileInput("book.json");
-            System.out.println("yuh");
+           // System.out.println("yuh");
             if (inputStream != null) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -530,9 +531,10 @@ public class MainActivity extends AppCompatActivity {
                                 for (int j = 0; j < methodarray.length(); j++) {
                                     //   method.setPadding(20, 50, 20, 40);
                                     String methodstep = methodarray.getString(j);
+                                     methodsteps[j] = methodstep;
                                     TextView textView = new TextView(getApplicationContext());
                                     textView.setTextSize(20);
-                                    System.out.println(methodstep);
+                                  //  System.out.println(methodstep);
                                     textView.setText(methodstep);
                                     textView.setTextColor(Color.BLACK);
                                     textView.setPadding(10, 50, 10, 10);
@@ -588,6 +590,9 @@ public class MainActivity extends AppCompatActivity {
         count++;
         bookentries++;
         cards++;
+        System.out.println("method itiao3hdfkg34iohgrofbndkv " + methodsteps[1]);
+
+
         try {
             // JSONArray bookArray = new JSONArray(readJSONFromAsset2());
             JSONObject obj = new JSONObject();
@@ -603,7 +608,23 @@ public class MainActivity extends AppCompatActivity {
             int ingredientlist = recipes[yee][0].length;
             System.out.println("ingredient list " + ingredientlist);
             JSONObject ingredient = new JSONObject();
-//            System.out.println(ingredientlist);
+            JSONArray quantities = new JSONArray();
+            JSONObject quantity = new JSONObject();
+            JSONArray method = new JSONArray();
+            JSONObject methodstep = new JSONObject();
+            int i = 0;
+            while (methodsteps[i] != null) {
+
+                methodstep.put("methodstep", methodsteps[i]);
+
+                method.put(methodsteps[i]);
+//                System.out.println("method step : " + methodsteps[i]);
+//                System.out.println(" method" + method);
+                i++;
+
+            }
+
+            //            System.out.println(ingredientlist);
             // adding ingredeints
             for (int counter3 = 0; counter3 < recipes[yee][0].length; counter3++) {
 //                System.out.println("book[yee][0][counter3] " + book[yee][0][counter3]);
@@ -612,8 +633,11 @@ public class MainActivity extends AppCompatActivity {
                     //  System.out.println("inside while");
                     book[yee][0][counter3] = recipes[yee][0][counter3];
                     ingredient.put("recipeIngredients", recipes[yee][0][counter3]);
+                    quantity.put("recipeQuantity", recipes[yee][1][counter3]);
+                    quantities.put(recipes[yee][1][counter3]);
 //                System.out.println("recipe ingredient: " + recipes[yee][0][counter3]);
                     ingredients.put(recipes[yee][0][counter3]);
+
 //                    System.out.println("ingredients: " + ingredients);
                 }
 
@@ -622,6 +646,8 @@ public class MainActivity extends AppCompatActivity {
                 bookRecipeNames[cards - 1] = recipenames[yee];
             }
             obj.put("recipeIngredients", ingredients);
+            obj.put("displayqty", quantities);
+            obj.put("method", method);
             bookArray.put(obj);
             System.out.println(bookArray);
 
@@ -638,7 +664,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void AddNewToBook(View view) {
         count++;
-        System.out.println("1");
+     //   System.out.println("1");
 
         bookentries++;
         cards++;
@@ -646,10 +672,10 @@ public class MainActivity extends AppCompatActivity {
             // JSONArray bookArray = new JSONArray(readJSONFromAsset2());
             JSONObject obj = new JSONObject();
             obj.put("recipeName", name);
-            System.out.println("4");
+          //  System.out.println("4");
 //            System.out.println("recipe name: " + recipenames[yee]);
             obj.put("recipeId", bookentries);
-            System.out.println("5");
+           // System.out.println("5");
 //            System.out.println("recipeId: " + id);
 //            // System.out.println(recipenames[yee]);
 
@@ -657,7 +683,7 @@ public class MainActivity extends AppCompatActivity {
             //    JSONObject ingredientobj = new JSONObject();
 
             int ingredientlist = AddRecipeIngredients[0].length;
-            System.out.println("ingredient list " + ingredientlist);
+        //    System.out.println("ingredient list " + ingredientlist);
             JSONObject ingredient = new JSONObject();
             JSONArray quantities = new JSONArray();
             JSONObject quantity = new JSONObject();
@@ -667,7 +693,7 @@ public class MainActivity extends AppCompatActivity {
             //ingredients = jArray
             //ingredient = jObject
             int i = 0;
-            while (steps[i] != null){
+            while (steps[i] != null) {
                 i++;
                 methodstep.put("method", steps[i]);
                 method.put(methodstep);
@@ -677,17 +703,17 @@ public class MainActivity extends AppCompatActivity {
 //                System.out.println("book[yee][0][counter3] " + book[yee][0][counter3]);
 //                System.out.println("recipes[yee][0][counter3] " + recipes[yee][0][counter3]);
                 if (AddRecipeIngredients[0][counter3] != null) {
-                    System.out.println("6");
+               //     System.out.println("6");
                     //  System.out.println("inside while");
                     ingredient.put("recipeIngredients", AddRecipeIngredients[0][counter3]);
                     quantity.put("displayqty", AddRecipeIngredients[1][counter3]);
-                    System.out.println("7");
+                //    System.out.println("7");
 //                System.out.println("recipe ingredient: " + recipes[yee][0][counter3]);
                     ingredients.put(AddRecipeIngredients[0][counter3]);
                     quantities.put(AddRecipeIngredients[1][counter3]);
 
 
-                    System.out.println("8");
+                 //   System.out.println("8");
 //                    System.out.println("ingredients: " + ingredients);
                 }
 
@@ -700,7 +726,7 @@ public class MainActivity extends AppCompatActivity {
             obj.put("displayqty", quantities);
             obj.put("method", method);
             bookArray.put(obj);
-            System.out.println("10");
+       //     System.out.println("10");
             System.out.println(bookArray);
             try {
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput("book.json", MODE_PRIVATE));
@@ -737,7 +763,7 @@ public class MainActivity extends AppCompatActivity {
         }
         try {
             String[] bookentry = new String[100];
-            System.out.println(bookentries);
+          //  System.out.println(bookentries);
             for (int i = 0; i < bookentries; ++i) {
                 String name = bookArray.getJSONObject(i).getString("recipeName");
 
@@ -810,8 +836,8 @@ public class MainActivity extends AppCompatActivity {
             x++;
             int finalX1 = x - 1;
             button1.setOnClickListener(view12 -> {
-                System.out.println("pp");
-                System.out.println(removeFromJsonArray(bookArray, finalX1));
+               // System.out.println("pp");
+               // System.out.println(removeFromJsonArray(bookArray, finalX1));
                 bookArray = removeFromJsonArray(bookArray, finalX1);
                 bookentries = bookentries - 1;
                 viewBook(view);
@@ -823,12 +849,12 @@ public class MainActivity extends AppCompatActivity {
             text2.setText(" ");
             //     text.setBackgroundResource(R.drawable.background);
             layout.addView(text);
-            System.out.println("layout.addView(text);");
+         //   System.out.println("layout.addView(text);");
             layout.addView(text2);
             layout.addView(button1);
-            System.out.println("  layout.addView(button1);");
+         //   System.out.println("  layout.addView(button1);");
             bookcard.addView(layout);
-            System.out.println("bookcard.addview(layout);");
+          //  System.out.println("bookcard.addview(layout);");
             text.setPadding(10, 10, 10, 10);
             column++;
 
@@ -839,15 +865,15 @@ public class MainActivity extends AppCompatActivity {
             int finalX = x - 1;
 
             bookcard.setOnClickListener(view13 -> {
-                System.out.println("finalX = " + finalX);
+            //    System.out.println("finalX = " + finalX);
                 setContentView(R.layout.bookrecipe);
                 TextView title = findViewById(R.id.recipeName);
                 title.setText(bookRecipeNames[finalX]);
-                System.out.println("clicked");
-                System.out.println(bookArray);
+            //    System.out.println("clicked");
+             //   System.out.println(bookArray);
                 yee = finalX;
                 id = yee + 1;
-               // setContentView(R.layout.recipescreen);
+                // setContentView(R.layout.recipescreen);
                 ImageButton yo = findViewById(R.id.imageButton4);
                 LinearLayout Ingredientlist = findViewById(R.id.ingredientlist);
                 LinearLayout qtylist = findViewById(R.id.qtylist);
@@ -855,7 +881,7 @@ public class MainActivity extends AppCompatActivity {
                 JSONArray jArray = null;
                 try {
                     jArray = new JSONArray(readFromFile());
-                    System.out.println(jArray);
+          //          System.out.println(jArray);
                     String recipeName = jArray.getJSONObject(finalX).getString("recipeName");
                     JSONArray ingredients = jArray.getJSONObject(finalX).getJSONArray("recipeIngredients");
                     JSONArray quantities = jArray.getJSONObject(finalX).getJSONArray("displayqty");
@@ -867,7 +893,7 @@ public class MainActivity extends AppCompatActivity {
                         textView.setText(ingredient);
                         textView.setTextColor(Color.BLACK);
                         Ingredientlist.addView(textView);
-                        System.out.println(ingredient);
+             //           System.out.println(ingredient);
                         TextView qtytext = new TextView(getApplicationContext());
                         qtytext.setTextSize(20);
                         //            qtytext.setBackgroundResource(R.drawable.background);
@@ -875,7 +901,7 @@ public class MainActivity extends AppCompatActivity {
                         String quantity = quantities.getString(j);
                         qtytext.setText(quantity);
                         qtytext.setTextColor(Color.BLACK);
-                        System.out.println(quantity);
+           //             System.out.println(quantity);
                         qtylist.addView(qtytext);
                     }
                     JSONArray methodarray = jArray.getJSONObject(finalX).getJSONArray("method");
@@ -884,7 +910,7 @@ public class MainActivity extends AppCompatActivity {
                         String methodstep = methodarray.getString(j);
                         TextView textView = new TextView(getApplicationContext());
                         textView.setTextSize(20);
-                        System.out.println(methodstep);
+                 //       System.out.println(methodstep);
                         textView.setText(methodstep);
                         textView.setTextColor(Color.BLACK);
                         textView.setPadding(10, 50, 10, 10);
@@ -914,10 +940,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-public void FromBookRecipe(View view){
+    public void FromBookRecipe(View view) {
         setContentView(R.layout.viewbook);
         viewBook(view);
-}
+    }
+
     public void AddedToBook(View view) {
 //        System.out.println("bookrecipenames1 " + bookRecipeNames[1]);
 //        System.out.println("added to book");
