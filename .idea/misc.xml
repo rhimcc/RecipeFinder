@@ -3,21 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/RecipeFinderLogo_background.xml" value="0.2535" />
         <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/background.xml" value="0.1" />
         <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/border.xml" value="0.1" />
+        <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/cross.xml" value="0.147" />
         <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/Welcomescreen.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/addrecipe.xml" value="0.14666666666666667" />
-        <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/bookrecipe.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/addmethod.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/addrecipe.xml" value="0.35330578512396693" />
+        <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/bookrecipe.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/findarecipe.xml" value="0.14666666666666667" />
-        <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/mainscreen.xml" value="0.1" />
+        <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/mainscreen.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/recipe.xml" value="0.22" />
-        <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/recipescreen.xml" value="0.1" />
+        <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/recipeinfo.xml" value="0.22" />
+        <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/recipescreen.xml" value="0.2719033232628399" />
         <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/shoppinglist.xml" value="0.1625" />
         <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/testing.xml" value="0.1609375" />
         <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/viewbook.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/layout/welcomescreen.xml" value="0.12" />
+        <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/mipmap-anydpi-v26/RecipeFinderLogo.xml" value="0.2535" />
+        <entry key="..\:/Users/riomc/AndroidStudioProjects/MyApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2535" />
       </map>
     </option>
   </component>

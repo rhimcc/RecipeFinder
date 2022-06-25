@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Recipe Finder</string>
     <string name="add_recipe">Add Recipe</string>
     <string name="find_a_recipe">Find A Recipe</string>
     <string name="ingredients">Ingredients</string>

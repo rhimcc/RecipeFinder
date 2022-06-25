@@ -1,502 +1,424 @@
 [
-
   {
     "recipeId": 1,
     "recipeName": "Pancakes",
     "recipeIngredients": [
-
       "Plain Flour",
       "Eggs",
       "Milk",
       "Vegetable oil"
-          ],
+    ],
     "quantities": [
-
       "100",
       "2",
       "300",
       "1"
     ],
     "displayqty": [
-
       "100g",
       "2",
       "300mL",
       "1tbsp"
     ],
     "method": [
-      "STEP 1: Put 100g plain flour, 2 large eggs, 300ml milk, 1 tbsp sunflower or vegetable oil and a pinch of salt into a bowl or large jug, then whisk to a smooth batter.",
-     "STEP 2: Set aside for 30 mins to rest if you have time, or start cooking straight away.",
-      "STEP 3: Set a medium frying pan or crêpe pan over a medium heat and carefully wipe it with some oiled kitchen paper.",
-      "STEP 4: When hot, cook your pancakes for 1 min on each side until golden, keeping them warm in a low oven as you go.",
-      "STEP 5: Serve with lemon wedges and caster sugar, or your favourite filling. Once cold, you can layer the pancakes between baking parchment, then wrap in cling film and freeze for up to 2 months."
+      "1. Put 100g plain flour, 2 large eggs, 300ml milk, 1 tbsp sunflower or vegetable oil and a pinch of salt into a bowl or large jug, then whisk to a smooth batter.",
+      "2. Set aside for 30 mins to rest if you have time, or start cooking straight away.",
+      "3. Set a medium frying pan or crêpe pan over a medium heat and carefully wipe it with some oiled kitchen paper.",
+      "4. When hot, cook your pancakes for 1 min on each side until golden, keeping them warm in a low oven as you go.",
+      "5. Serve with lemon wedges and caster sugar, or your favourite filling. Once cold, you can layer the pancakes between baking parchment, then wrap in cling film and freeze for up to 2 months."
     ]
   },
   {
     "recipeId": 2,
-    "recipeName": "Apple Juice1",
+    "recipeName": "Banana Bread",
     "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
+      "Self-raising flour",
+      "Plain flour",
+      "Cinnamon ground",
+      "Brown sugar",
+      "Bananas",
+      "Eggs",
+      "Skim milk",
+      "Butter"
     ],
     "quantities": [
-
       "265",
       "40",
+      "2.5",
       "140",
       "2",
       "2",
-      "145",
+      "125",
       "50"
     ],
+    "displayqty": [
+      "265g",
+      "40g",
+      "2.5g",
+      "140g",
+      "2",
+      "2",
+      "125mL",
+      "50g"
+    ],
     "method": [
-      "Stir",
-      "pour"
+      "1. Preheat oven to 180°C. Brush an 11 x 21cm (base measurement) loaf pan with melted dairy spread to lightly grease. Line the base and 2 opposite sides with non-stick baking paper, allowing it to overhang.",
+      "2. Sift the combined flours and cinnamon into a large bowl. Stir in the sugar and make a well in the centre. Mash bananas in a medium bowl. Add the eggs, milk, and melted butter, and stir until well combined. Add the banana mixture to the flour mixture and stir until just combined. Spoon the mixture into the prepared pan and smooth the surface.",
+      "3. Bake in preheated oven for 45-50 minutes or until a skewer inserted into the centre comes out clean. Remove from oven and set aside in the pan for 5 minutes. Turn onto a wire rack to cool completely. Cut into slices to serve."
     ]
   },
   {
     "recipeId": 3,
-    "recipeName": "Apple Jui2ce",
+    "recipeName": "Mini Quiches",
     "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
+      "Plain flour",
+      "Eggs",
+      "Thickened Cream",
+      "Milk",
+      "Ham",
+      "Pizza cheese",
+      "Chopped Chives",
+      "Basil leaves"
     ],
-
     "quantities": [
-
-      "265",
-      "40",
-      "140",
-      "2",
-      "2",
-      "25",
-      "50"
+      "150",
+      "3",
+      "125",
+      "125",
+      "135",
+      "80",
+      "6",
+      ""
+    ],
+    "displayqty": [
+      "150g",
+      "3",
+      "125mL",
+      "125mL",
+      "135g",
+      "80g",
+      "6g",
+      "(Serve)"
     ],
     "method": [
-      "Stir",
-      "pour"
+      "1. Preheat your oven to 200C /180C fan forced. Lightly spray two, 12-hole patty pans with oil",
+      "2. Use a balloon whisk to whisk the flour, eggs, cream and milk in a bowl. Season. Stir in the ham, cheese and chives. Divide the mixture among the prepared pans.",
+      "3. Bake for 12 minutes or until golden brown. Serve sprinkled with basil and extra chives."
     ]
-
   },
   {
     "recipeId": 4,
-    "recipeName": "Apple uice",
+    "recipeName": "Peanut Butter noodles",
     "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
+      "Peanut butter",
+      "Rice wine vinegar",
+      "Soy sauce",
+      "Maple syrup",
+      "Hokkien noodles",
+      "Green shallots",
+      "Peanuts"
     ],
     "quantities": [
-
-      "25",
-      "40",
-      "140",
-      "2",
-      "2",
-      "125",
-      "50"
+      "32",
+      "30",
+      "30",
+      "30",
+      "200",
+      "",
+      ""
+    ],
+    "displayqty": [
+      "32g",
+      "30mL",
+      "30mL",
+      "30mL",
+      "200g",
+      "(Serve)",
+      "(Serve)"
+    ],
+    "method": [
+      "1. Place peanut butter, vinegar, soy sauce and maple syrup in a serving bowl and stir until combined",
+      "2. Cook the noodles following packet directions. Drain then add to bowl. Toss until noodles and sauce are well combined.",
+      "3. Sprinkle with onion and peanuts to serve."
     ]
   },
   {
     "recipeId": 5,
-    "recipeName": "Appe Juice",
+    "recipeName": "Massaman Curry Tray",
     "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
+      "Coconut Milk",
+      "Chicken liquid stock",
+      "Massaman curry paste",
+      "Butternut pumpkin",
+      "Meatballs",
+      "Red Onion",
+      "Snow peas",
+      "Peanuts",
+      "Red Chilli",
+      "Steamed rice"
     ],
     "quantities": [
-
-      "265",
-      "40",
-      "140",
-      "2",
-      "20",
-      "125",
-      "50"
+      "400",
+      "180",
+      "80",
+      "700",
+      "400",
+      "1",
+      "100",
+      "16",
+      "",
+      ""
+    ],
+    "displayqty": [
+      "400mL",
+      "180mL",
+      "80g",
+      "700g",
+      "400g",
+      "1",
+      "100g",
+      "16g",
+      "(Serve)",
+      "(Serve)"
+    ],
+    "method": [
+      "1. Preheat oven to 200C/180C fan forced. Whisk together the coconut milk, stock and curry paste in a jug until combined. Pour into a large deep baking tray. Arrange the pumpkin, meatballs and onion on the tray and spray the tops with oil. Roast for 35 minutes or until the meatballs are cooked through and vegetables are tender.",
+      "2. Meanwhile, place the snow peas in a heatproof bowl. Fill another bowl with iced water. Pour boiling water over the snow peas. Set aside for 2 minutes then use tongs to transfer the snow peas to the bowl of iced water. Set aside for 1 minute. Drain well then cut into thin strips.",
+      "3. Scatter the blanched snow peas, peanuts and chilli over the tray bake. Serve with steamed rice."
     ]
   },
   {
     "recipeId": 6,
-    "recipeName": "Apple Juie",
+    "recipeName": "Minestrone",
     "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
+      "Macaroni",
+      "Vegetable liquid stock",
+      "Olive oil",
+      "Brown onion",
+      "Carrot",
+      "Crushed tomatoes",
+      "Black pepper",
+      "Cannellini beans",
+      "Green beans",
+      "Parmesan",
+      "Bread Rolls"
     ],
     "quantities": [
-
-      "265",
-      "40",
-      "14",
-      "2",
-      "2",
-      "125",
-      "50"
+      "55",
+      "15",
+      "1",
+      "1",
+      "425",
+      "250",
+      "",
+      "400",
+      "25",
+      "6",
+      "4"
+    ],
+    "displayqty": [
+      "55g",
+      "15mL",
+      "1",
+      "1",
+      "425g",
+      "250mL",
+      "",
+      "400g",
+      "25g",
+      "6g",
+      "4"
+    ],
+    "method": [
+      "1. Cook the pasta in a large saucepan of salted boiling water following packet directions until al dente. Drain.",
+      "2. Meanwhile, heat oil in a saucepan over medium heat. Add onion and carrot and cook, stirring, for 3 minutes or until onion softens. Add tomato and stock, and bring to the boil. Reduce heat to low and simmer, stirring occasionally, for 6-7 minutes or until carrot is tender. Taste and season with salt and pepper.",
+      "3. Add pasta, cannellini and green beans. Cook for 3 minutes or until green beans are bright green and tender crisp. Ladle soup among bowls. Sprinkle with parmesan and serve with rolls."
     ]
   },
   {
     "recipeId": 7,
-    "recipeName": "Aple Juice",
+    "recipeName": "Banana Peanut Butter Muffins",
     "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
+      "Bananas",
+      "Bi-carb soda",
+      "Eggs",
+      "Smooth peanut butter",
+      "Vanilla extract"
     ],
     "quantities": [
-
-      "265",
-      "40",
-      "140",
-      "2",
-      "2",
-      "125",
-      "5"
+      "4",
+      "6",
+      "4",
+      "127",
+      "10"
+    ],
+    "displayqty": [
+      "4",
+      "6g",
+      "4",
+      "127g (1 1/3 cups)",
+      "10mL"
+    ],
+    "method": [
+      "1. Preheat oven to 200C/180C fan-forced. Line a 12-hole (1/3-cup capacity) muffin pan with paper cases.",
+      "2. Place all ingredients in a food processor. Process until just combined (don’t over process or muffins will be tough).",
+      "3. Divide mixture evenly among prepared holes. Bake for 15 to 20 minutes or until firm to touch. Stand in pan for 5 minutes. Transfer to a wire rack to cool completely.",
+      "4. Top each muffin with extra peanut butter and a slice of extra banana. Serve."
     ]
   },
   {
     "recipeId": 8,
-    "recipeName": "Apple Juice",
+    "recipeName": "Carbonara sausage pasta",
     "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
+      "Farfalle Pasta",
+      "Beef sausages",
+      "Brussel sprouts",
+      "Dried chilli flakes",
+      "Carbonara pasta sauce"
     ],
     "quantities": [
-
-      "265",
-      "40",
-      "140",
-      "2",
-      "2",
-      "125",
-      "50"
+      "375",
+      "8",
+      "400",
+      "2.5",
+      "490"
+    ],
+    "displayqty": [
+      "375g",
+      "8",
+      "400g",
+      "2.5g",
+      "490g"
+    ],
+    "method": [
+      "1. Cook the pasta in a large saucepan of boiling water following packet directions or until al dente. Drain, reserving 1/2 cup (125ml) of the cooking liquid.",
+      "2. Meanwhile, heat a large non-stick frying pan over high heat. Add the sausage and cook, stirring with a wooden spoon to break into lumps, for 5 mins or until browned and cooked through.",
+      "3. Add brussel sprouts to the pan and cook, stirring occasionally, for 5 mins or until browned. Add the chilli flakes, if using, and cook, stirring, for 30 sec or until aromatic. Add the pasta, pasta sauce and the reserved cooking liquid. Bring to a simmer. Season. Cook until well combined and heated through.",
+      "4. Divide the pasta mixture among serving bowls. Sprinkle with extra chilli flakes, if using, to serve."
     ]
   },
   {
     "recipeId": 9,
-    "recipeName": "Apple Juice",
+    "recipeName": "Chicken noodle soup",
     "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
+      "Rice Vermicelli noodles",
+      "Macadamia oil",
+      "Brown onion",
+      "Celery sticks",
+      "Garlic Cloves",
+      "Fresh ginger",
+      "Red Chilli",
+      "Lemongrass stick",
+      "Chicken thigh fillets",
+      "Chicken stock",
+      "Cherry tomatoes",
+      "Broccolini",
+      "Snow peas",
+      "Baby buk choy",
+      "Fresh lime juice",
+      "Basil leaves"
     ],
     "quantities": [
-
-      "265",
-      "40",
-      "140",
+      "100",
+      "10",
+      "1",
       "2",
       "2",
-      "125",
-      "50"
+      "3",
+      "1",
+      "1",
+      "400",
+      "500",
+      "250",
+      "1",
+      "150",
+      "1",
+      "15",
+      ""
+    ],
+    "displayqty": [
+      "100g",
+      "10mL",
+      "1",
+      "2",
+      "2",
+      "3cm",
+      "1",
+      "1",
+      "400g",
+      "500mL",
+      "250g",
+      "1",
+      "150g",
+      "1",
+      "15mL",
+      ""
+    ],
+    "method": [
+      "1. Place noodles in a large heatproof bowl. Cover with boiling water. Set aside for 5 minutes to soften. Drain.",
+      "2. Heat oil in a large saucepan over medium heat. Cook onion and celery, stirring, for 5-6 minutes or until softened. Add garlic, ginger, chilli and lemongrass. Cook, stirring, for 1 minute or until aromatic. Add chicken. Cook for 1 minute or until starting to colour.",
+      "3. Pour in stock and 750ml (3 cups) water. Bring to the boil. Reduce heat to low. Simmer, partially covered, for 10 minutes or until chicken is cooked through. Remove chicken with tongs. Transfer to a clean board. Set aside to cool slightly. Shred. Return to pan.",
+      "4. Add tomato, broccolini and snow peas to soup. Simmer for 3-4 minutes or until vegetables are just tender. Stir through buk choy until just wilted. Stir in lime juice and season. Divide noodles among bowls. Ladle over soup. Serve with basil."
     ]
   },
   {
     "recipeId": 10,
-    "recipeName": "Apple Juice",
+    "recipeName": "Chicken and vegie stir-fry",
     "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
+      "Vermicelli noodles",
+      "Tamari",
+      "Lime Juice",
+      "Brown Sugar",
+      "Chicken Breast",
+      "Red onion",
+      "Carrot",
+      "Red Chilli",
+      "Lemongrass stalk",
+      "Fresh ginger",
+      "Garlic Cloves",
+      "Red Capsicum",
+      "Snap Peas",
+      "Zucchini noodles",
+      "Basil leaves"
     ],
     "quantities": [
-
-      "265",
-      "40",
-      "140",
+      "100",
+      "30",
+      "15",
+      "5",
+      "500",
+      "1",
+      "1",
+      "1",
+      "4",
       "2",
-      "2",
-      "125",
-      "50"
-    ]
-  },
-  {
-    "recipeId": 11,
-    "recipeName": "Apple Juice",
-    "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
+      "1",
+      "200",
+      "250",
+      ""
     ],
-    "quantities": [
-
-      "265",
-      "40",
-      "140",
+    "displayqty": [
+      "100g",
+      "30mL",
+      "15mL",
+      "5g",
+      "500g",
+      "1",
+      "1",
+      "1",
+      "4g",
       "2",
-      "2",
-      "125",
-      "50"
-    ]
-  },
-  {
-    "recipeId": 12,
-    "recipeName": "Apple Juice",
-    "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
+      "1",
+      "200g",
+      "250g",
+      "(Serve)"
     ],
-    "quantities": [
-
-      "265",
-      "40",
-      "140",
-      "2",
-      "2",
-      "125",
-      "50"
-    ]
-  },{
-  "recipeId": 13,
-  "recipeName": "Apple Juice",
-  "recipeIngredients": [
-
-    "Water",
-    "Apple",
-    "Water",
-    "Apple",
-    "Water",
-    "Apple",
-    "Water"
-  ],
-  "quantities": [
-
-    "265",
-    "40",
-    "140",
-    "2",
-    "2",
-    "125",
-    "50"
-  ]
-},{
-  "recipeId": 14,
-  "recipeName": "Apple Juice",
-  "recipeIngredients": [
-
-    "Water",
-    "Apple",
-    "Water",
-    "Apple",
-    "Water",
-    "Apple",
-    "Water"
-  ],
-  "quantities": [
-
-    "265",
-    "40",
-    "140",
-    "2",
-    "2",
-    "125",
-    "50"
-  ]
-},
-  {
-    "recipeId": 15,
-    "recipeName": "Apple Juice",
-    "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
-    ],
-    "quantities": [
-
-      "265",
-      "40",
-      "140",
-      "2",
-      "2",
-      "125",
-      "50"
-    ]
-  },
-  {
-    "recipeId": 16,
-    "recipeName": "Apple Juice",
-    "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
-    ],
-    "quantities": [
-
-      "265",
-      "40",
-      "140",
-      "2",
-      "2",
-      "125",
-      "50"
-    ]
-  },
-  {
-    "recipeId": 17,
-    "recipeName": "Apple Juice",
-    "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
-    ],
-    "quantities": [
-
-      "265",
-      "40",
-      "140",
-      "2",
-      "2",
-      "125",
-      "50"
-    ]
-  },{
-  "recipeId": 18,
-  "recipeName": "Apple Juice",
-  "recipeIngredients": [
-
-    "Water",
-    "Apple",
-    "Water",
-    "Apple",
-    "Water",
-    "Apple",
-    "Water"
-  ],
-  "quantities": [
-
-    "265",
-    "40",
-    "140",
-    "2",
-    "2",
-    "125",
-    "50"
-  ]
-},
-  {
-    "recipeId": 19,
-    "recipeName": "Apple Juice",
-    "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
-    ],
-    "quantities": [
-
-      "265",
-      "40",
-      "140",
-      "2",
-      "2",
-      "125",
-      "50"
-    ]
-  },
-  {
-    "recipeId": 20,
-    "recipeName": "Apple Juice",
-    "recipeIngredients": [
-
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water",
-      "Apple",
-      "Water"
-    ],
-    "quantities": [
-
-      "265",
-      "40",
-      "140",
-      "2",
-      "2",
-      "125",
-      "50"
+    "method": [
+      "1. Place the noodles in a large heatproof bowl. Cover with boiling water and set aside to soak for 5 minutes or until tender. Drain.",
+      "2. Combine the tamari, lime juice and sugar in a small bowl, stirring to dissolve the sugar. Set aside.",
+      "3. Spray a large wok with oil and heat over high heat. Stir-fry the chicken, in 2 batches, for 2-3 minutes each batch or until golden. Transfer to a plate.",
+      "4. Spray the wok with a little more oil. Add the onion and carrot and stir-fry for 2 minutes. Add the chilli, lemongrass, ginger and garlic and stir-fry for 1 minute or until aromatic. Add the capsicum, peas and 2 tablespoons water and stir-fry for 1 minute. Add the zucchini and vermicelli noodles and stir-fry for 1-2 minutes or until the vegetables are nearly tender.",
+      "5. Add the sauce mixture and the chicken to the wok. Stir-fry for 1-2 minutes or until heated through. Serve topped with fresh basil leaves."
     ]
   }
-
-
-
-
 ]
