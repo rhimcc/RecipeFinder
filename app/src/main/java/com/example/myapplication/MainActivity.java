@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
     int[][] percent = new int[2][20];
     String[][][] book = new String[100][4][100];
     JSONArray bookArray = new JSONArray();
-    String[] bookRecipeNames = new String[20];
-    String[][] AddRecipeIngredients = new String[100][2];
+    String[] bookRecipeNames = new String[100];
+    String[][] AddRecipeIngredients = new String[2][100];
     int counter = 0;
     String[] bookentry = new String[100];
     int counter2 = 0;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     int buttoncheck = 0;
     String[][][] anotherArray = new String[100][100][100];
     int stepcounter = 0;
-    String[] steps = new String[100];
+  public static String[] steps = new String[100];
 
     public static String[][][] removeTheElement(String[][][] book, int finalX1) {
 
@@ -144,9 +144,9 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < jArray.length(); ++i) {
                 String name = jArray.getJSONObject(i).getString("recipeName");
                 recipenames[i] = name;
-                System.out.println(recipenames[i]);
-                System.out.println("name " + name);
-                System.out.println("array yuh " + book[0][0][0]);
+               // System.out.println(recipenames[i]);
+              //  System.out.println("name " + name);
+             //   System.out.println("array yuh " + book[0][0][0]);
 
 
                 JSONArray ingredients = jArray.getJSONObject(i).getJSONArray("recipeIngredients");
@@ -614,7 +614,6 @@ public class MainActivity extends AppCompatActivity {
             JSONObject methodstep = new JSONObject();
             int i = 0;
             while (methodsteps[i] != null) {
-
                 methodstep.put("methodstep", methodsteps[i]);
 
                 method.put(methodsteps[i]);
@@ -692,22 +691,35 @@ public class MainActivity extends AppCompatActivity {
 //            System.out.println(ingredientlist);
             //ingredients = jArray
             //ingredient = jObject
-            int i = 0;
+            int i = 1;
+            System.out.println("steps[i} = " + steps[i]);
             while (steps[i] != null) {
-                i++;
-                methodstep.put("method", steps[i]);
-                method.put(methodstep);
 
+
+                System.out.println(steps[i]);
+                methodstep.put("steps[i]", steps[i]);
+                method.put(steps[i]);
+                System.out.println("method: " + method);
+                i++;
             }
+
+            for (i = 0; i < AddRecipeIngredients.length; i++){
+                System.out.println("add hrgiefdk " + AddRecipeIngredients[0][i]);
+            }
+            System.out.println(" length " + AddRecipeIngredients[0].length);
+
             for (int counter3 = 0; counter3 < AddRecipeIngredients[0].length; counter3++) {
 //                System.out.println("book[yee][0][counter3] " + book[yee][0][counter3]);
 //                System.out.println("recipes[yee][0][counter3] " + recipes[yee][0][counter3]);
+
                 if (AddRecipeIngredients[0][counter3] != null) {
                //     System.out.println("6");
                     //  System.out.println("inside while");
                     ingredient.put("recipeIngredients", AddRecipeIngredients[0][counter3]);
                     quantity.put("displayqty", AddRecipeIngredients[1][counter3]);
-                //    System.out.println("7");
+                    System.out.println("h3jgiro" + AddRecipeIngredients[0][counter3]);
+                    System.out.println(AddRecipeIngredients[1][counter3]);
+                    //    System.out.println("7");
 //                System.out.println("recipe ingredient: " + recipes[yee][0][counter3]);
                     ingredients.put(AddRecipeIngredients[0][counter3]);
                     quantities.put(AddRecipeIngredients[1][counter3]);
@@ -1073,8 +1085,9 @@ public class MainActivity extends AppCompatActivity {
         EditText edit = findViewById(R.id.enterStep);
 
         step = stepcounter + ". " + getStep(edit);
-        System.out.println(step);
+        System.out.println("step in addStep " + step);
         steps[stepcounter] = step;
+        System.out.println(steps[stepcounter]);
 
         text.setTextSize(20);
         text.setText(step);
@@ -1098,8 +1111,9 @@ public class MainActivity extends AppCompatActivity {
         EditText qty = findViewById(R.id.AddQtyBox);
         TextView TextIngredient = new TextView(this);
         TextView TextQty = new TextView(this);
-        AddRecipeIngredients[counter3][0] = GetIngredient(ingredient);
-        AddRecipeIngredients[counter3][1] = GetQty(qty);
+        AddRecipeIngredients[0][counter3] = GetIngredient(ingredient);
+        System.out.println("peepoo " + AddRecipeIngredients[0][counter3]);
+        AddRecipeIngredients[1][counter3] = GetQty(qty);
         TextIngredient.setTextColor(Color.BLACK);
 //     TextIngredient.setTextColor(R.color.black);
         TextIngredient.setTextSize(20);
