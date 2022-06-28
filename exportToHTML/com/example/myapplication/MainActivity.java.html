@@ -1,0 +1,836 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #808080;}
+.s4 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.myapplication</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.annotation.SuppressLint</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.graphics.Color</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.Gravity</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.Window</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Button</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.EditText</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.GridLayout</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ImageButton</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.LinearLayout</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.annotation.NonNull</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.cardview.widget.CardView</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">org.json.JSONArray</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.json.JSONException</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.json.JSONObject</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.io.BufferedReader</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.io.File</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.io.IOException</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.io.InputStream</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.io.InputStreamReader</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.io.OutputStreamWriter</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.nio.charset.StandardCharsets</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Arrays</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Collections</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+
+    <span class="s0">public static </span><span class="s1">File bookfile</span><span class="s0">;</span>
+    <span class="s0">public static int </span><span class="s1">co = </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s0">public static </span><span class="s1">String[] recipenames = </span><span class="s0">new </span><span class="s1">String[</span><span class="s2">20</span><span class="s1">]</span><span class="s0">;</span>
+    <span class="s1">String[][][] recipes = </span><span class="s0">new </span><span class="s1">String[</span><span class="s2">20</span><span class="s1">][</span><span class="s2">4</span><span class="s1">][</span><span class="s2">20</span><span class="s1">]</span><span class="s0">;</span>
+    <span class="s0">int</span><span class="s1">[][] percent = </span><span class="s0">new int</span><span class="s1">[</span><span class="s2">2</span><span class="s1">][</span><span class="s2">20</span><span class="s1">]</span><span class="s0">;</span>
+    <span class="s1">String[][][] book = </span><span class="s0">new </span><span class="s1">String[</span><span class="s2">100</span><span class="s1">][</span><span class="s2">4</span><span class="s1">][</span><span class="s2">100</span><span class="s1">]</span><span class="s0">;</span>
+    <span class="s1">JSONArray bookArray = </span><span class="s0">new </span><span class="s1">JSONArray()</span><span class="s0">;</span>
+    <span class="s1">String[] bookRecipeNames = </span><span class="s0">new </span><span class="s1">String[</span><span class="s2">20</span><span class="s1">]</span><span class="s0">;</span>
+    <span class="s1">String[][] AddRecipeIngredients = </span><span class="s0">new </span><span class="s1">String[</span><span class="s2">100</span><span class="s1">][</span><span class="s2">2</span><span class="s1">]</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">counter = </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s1">String[] bookentry = </span><span class="s0">new </span><span class="s1">String[</span><span class="s2">100</span><span class="s1">]</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">counter2 = </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s1">String[] items = </span><span class="s0">new </span><span class="s1">String[</span><span class="s2">100</span><span class="s1">]</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">count = </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">yee = </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">id = </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">recipeId = </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">height = </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">width = </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">cards = </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">bookentries = </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">counter3 = </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">buttoncheck = </span><span class="s2">0</span><span class="s0">;</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s1">co++</span><span class="s0">;</span>
+        <span class="s3">//File book;</span>
+        <span class="s1">initialiseJSON()</span><span class="s0">;</span>
+        <span class="s1">height = </span><span class="s0">this</span><span class="s1">.getResources().getDisplayMetrics().heightPixels</span><span class="s0">;</span>
+        <span class="s1">width = </span><span class="s0">this</span><span class="s1">.getResources().getDisplayMetrics().widthPixels</span><span class="s0">;</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">requestWindowFeature(Window.FEATURE_NO_TITLE)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.welcomescreen)</span><span class="s0">;</span>
+        <span class="s1">Button welcome = findViewById(R.id.Welcome)</span><span class="s0">;</span>
+        <span class="s1">welcome.setHeight(height - </span><span class="s2">1200</span><span class="s1">)</span><span class="s0">;</span>
+<span class="s3">//        RelativeLayout.LayoutParams layoutParams = new LayoutPara</span>
+<span class="s3">//        welcome.setLayoutParams((56/1080 * width), 100);</span>
+        <span class="s3">//    welcome.setMaxWidth(width - 1200);</span>
+        <span class="s1">welcome.setMinHeight(height - </span><span class="s2">1000</span><span class="s1">)</span><span class="s0">;</span>
+
+
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s3">//  String yuh = readFromFile();</span>
+
+
+            <span class="s3">//  System.out.println(&quot;string from file: &quot; + yuh);</span>
+            <span class="s1">bookArray = </span><span class="s0">new </span><span class="s1">JSONArray(readFromFile())</span><span class="s0">;</span>
+            <span class="s1">bookentries = bookArray.length()</span><span class="s0">;</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;book entries: &quot; </span><span class="s1">+ bookentries)</span><span class="s0">;</span>
+            <span class="s1">System.out.println(bookArray)</span><span class="s0">;</span>
+<span class="s3">//            System.out.println(bookArray);</span>
+            <span class="s1">JSONArray jArray = </span><span class="s0">new </span><span class="s1">JSONArray(readJSONFromAsset())</span><span class="s0">;</span>
+
+            <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">i &lt; jArray.length()</span><span class="s0">; </span><span class="s1">++i) {</span>
+                <span class="s1">String name = jArray.getJSONObject(i).getString(</span><span class="s4">&quot;recipeName&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">recipenames[i] = name</span><span class="s0">;</span>
+                <span class="s1">System.out.println(recipenames[i])</span><span class="s0">;</span>
+                <span class="s1">System.out.println(</span><span class="s4">&quot;name &quot; </span><span class="s1">+ name)</span><span class="s0">;</span>
+
+
+                <span class="s1">JSONArray ingredients = jArray.getJSONObject(i).getJSONArray(</span><span class="s4">&quot;recipeIngredients&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">JSONArray quantities = jArray.getJSONObject(i).getJSONArray(</span><span class="s4">&quot;quantities&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">j = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">j &lt; ingredients.length()</span><span class="s0">; </span><span class="s1">j++) {</span>
+                    <span class="s1">String ingredient = ingredients.getString(j)</span><span class="s0">;</span>
+
+                    <span class="s1">recipes[i][</span><span class="s2">0</span><span class="s1">][j] = ingredient</span><span class="s0">;</span>
+                    <span class="s1">String quantity = quantities.getString(j)</span><span class="s0">;</span>
+
+                    <span class="s1">recipes[i][</span><span class="s2">1</span><span class="s1">][j] = quantity</span><span class="s0">;</span>
+
+                <span class="s1">}</span>
+
+            <span class="s1">}</span>
+            <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">i &lt; bookentries</span><span class="s0">; </span><span class="s1">++i) {</span>
+                <span class="s0">try </span><span class="s1">{</span>
+                    <span class="s1">String recipename = bookArray.getJSONObject(i).getString(</span><span class="s4">&quot;recipeName&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">System.out.println(recipename)</span><span class="s0">;</span>
+                    <span class="s1">recipeId = bookArray.getJSONObject(i).getInt(</span><span class="s4">&quot;recipeId&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">bookentry[i] = recipename</span><span class="s0">;</span>
+                    <span class="s1">bookRecipeNames[i] = recipename</span><span class="s0">;</span>
+                <span class="s1">} </span><span class="s0">catch </span><span class="s1">(Exception e) {</span>
+<span class="s3">//                    System.out.println(&quot;stupid&quot;);</span>
+                <span class="s1">}</span>
+
+<span class="s3">//                System.out.println(bookentry[i]);</span>
+
+<span class="s3">//                JSONArray ingredients = bookArray.getJSONObject(i).getJSONArray(&quot;recipeIngredients&quot;);</span>
+<span class="s3">//                JSONArray quantities = bookArray.getJSONObject(i).getJSONArray(&quot;quantities&quot;);</span>
+<span class="s3">//                for (int j = 0; j &lt; ingredients.length(); j++) {</span>
+<span class="s3">//                    String ingredient = ingredients.getString(j);</span>
+<span class="s3">//                    book[i][0][j] = ingredient;</span>
+<span class="s3">////                    System.out.println(&quot;(book[i][0][j] &quot; + book[i][0][j]);</span>
+<span class="s3">//                    String quantity = quantities.getString(j);</span>
+<span class="s3">//                    book[i][1][j] = quantity;</span>
+<span class="s3">////                    System.out.println(&quot;book[i][1][j] &quot; + book[i][1][j]);</span>
+<span class="s3">//</span>
+<span class="s3">//                }</span>
+
+            <span class="s1">}</span>
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(JSONException e) {</span>
+            <span class="s1">e.printStackTrace()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+
+    <span class="s0">private </span><span class="s1">String readFromFile() {</span>
+        <span class="s1">System.out.println(</span><span class="s4">&quot;Height &quot; </span><span class="s1">+ height)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s4">&quot;width &quot; </span><span class="s1">+ width)</span><span class="s0">;</span>
+        <span class="s1">String ret = </span><span class="s4">&quot;&quot;</span><span class="s0">;</span>
+        <span class="s1">InputStream inputStream</span><span class="s0">;</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">inputStream = </span><span class="s0">this</span><span class="s1">.openFileInput(</span><span class="s4">&quot;book.json&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;yuh&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">if </span><span class="s1">(inputStream != </span><span class="s0">null</span><span class="s1">) {</span>
+                <span class="s1">InputStreamReader inputStreamReader = </span><span class="s0">new </span><span class="s1">InputStreamReader(inputStream)</span><span class="s0">;</span>
+                <span class="s1">BufferedReader bufferedReader = </span><span class="s0">new </span><span class="s1">BufferedReader(inputStreamReader)</span><span class="s0">;</span>
+                <span class="s1">String receiveString</span><span class="s0">;</span>
+                <span class="s1">StringBuilder stringBuilder = </span><span class="s0">new </span><span class="s1">StringBuilder()</span><span class="s0">;</span>
+
+                <span class="s0">while </span><span class="s1">((receiveString = bufferedReader.readLine()) != </span><span class="s0">null</span><span class="s1">) {</span>
+                    <span class="s1">stringBuilder.append(receiveString)</span><span class="s0">;</span>
+                <span class="s1">}</span>
+
+                <span class="s1">ret = stringBuilder.toString()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(IOException e) {</span>
+            <span class="s1">e.printStackTrace()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">ret</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">Welcome(View view) {</span>
+        <span class="s1">System.out.println(</span><span class="s4">&quot;co &quot; </span><span class="s1">+ co)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.mainscreen)</span><span class="s0">;</span>
+        <span class="s3">// text.setWidth(width);</span>
+
+
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">initialiseJSON() {</span>
+<span class="s3">//        File bookfile;</span>
+<span class="s3">//</span>
+        <span class="s1">bookfile = </span><span class="s0">this</span><span class="s1">.getFileStreamPath(</span><span class="s4">&quot;book.json&quot;</span><span class="s1">)</span><span class="s0">;</span>
+<span class="s3">////        System.out.println(bookfile);</span>
+<span class="s3">//</span>
+        <span class="s0">if </span><span class="s1">(!bookfile.exists()) {</span>
+            <span class="s1">bookfile = </span><span class="s0">new </span><span class="s1">File(</span><span class="s0">this</span><span class="s1">.getFilesDir()</span><span class="s0">, </span><span class="s4">&quot;book.json&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookfile.setWritable(</span><span class="s0">true</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+<span class="s3">//        String line = null;</span>
+<span class="s3">//        String path = null;</span>
+<span class="s3">//        try {</span>
+<span class="s3">//            FileReader fileReader = new FileReader(bookfile);</span>
+<span class="s3">//            StringBuffer output = new StringBuffer();</span>
+<span class="s3">//            BufferedReader bufferedReader = new BufferedReader(fileReader);</span>
+<span class="s3">//            while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="s3">//                output.append(line + &quot;\n&quot;);</span>
+<span class="s3">//            }</span>
+<span class="s3">//            String response = output.toString();</span>
+<span class="s3">//            System.out.println(&quot;line: &quot; + line);</span>
+<span class="s3">//</span>
+<span class="s3">////            String appendedString = line + &quot;boo&quot;;</span>
+<span class="s3">////            System.out.println(appendedString);</span>
+<span class="s3">////            path = bookfile.getPath();</span>
+<span class="s3">//            FileWriter fileWriter = new FileWriter(bookfile);</span>
+<span class="s3">//            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);</span>
+<span class="s3">//            bufferedWriter.write(&quot;{}&quot;);</span>
+<span class="s3">//            System.out.println(bufferedWriter);</span>
+<span class="s3">//            bufferedWriter.close();</span>
+<span class="s3">//</span>
+<span class="s3">////            try {</span>
+<span class="s3">////                // InputStream is = bufferedReader.readLine();</span>
+<span class="s3">//////                int size = is.available();</span>
+<span class="s3">//////                byte[] buffer = new byte[size];</span>
+<span class="s3">//////                is.read(buffer);</span>
+<span class="s3">//////                is.close();</span>
+<span class="s3">//////                String json = new String(buffer, StandardCharsets.UTF_8);</span>
+<span class="s3">////</span>
+<span class="s3">//////            } catch (IOException ex) {</span>
+<span class="s3">//////                ex.printStackTrace();</span>
+<span class="s3">//////                return null;</span>
+<span class="s3">//////            }</span>
+<span class="s3">//            //            System.out.println(line3);</span>
+<span class="s3">//        } catch (IOException e) {</span>
+<span class="s3">//            e.printStackTrace();</span>
+<span class="s3">//        }</span>
+<span class="s3">//</span>
+<span class="s3">//</span>
+<span class="s3">////        System.out.println(&quot;no&quot;);</span>
+<span class="s3">//</span>
+<span class="s3">//        return path;</span>
+<span class="s3">//    }</span>
+<span class="s3">//        try {</span>
+<span class="s3">//            InputStream is = getAssets().open(&quot;recipes.json&quot;);</span>
+<span class="s3">//            int size = is.available();</span>
+<span class="s3">//            byte[] buffer = new byte[size];</span>
+<span class="s3">//            is.read(buffer);</span>
+<span class="s3">//            is.close();</span>
+<span class="s3">//            json = new String(buffer, StandardCharsets.UTF_8);</span>
+<span class="s3">//</span>
+<span class="s3">//        } catch (IOException ex) {</span>
+<span class="s3">//            ex.printStackTrace();</span>
+<span class="s3">//            return null;</span>
+<span class="s3">//        }</span>
+<span class="s3">//</span>
+<span class="s3">//</span>
+<span class="s3">//    public String readJSONFromAsset2() {</span>
+<span class="s3">//        String json = null;</span>
+<span class="s3">//        try {</span>
+<span class="s3">//            InputStream is = getAssets().open(&quot;book.json&quot;);</span>
+<span class="s3">//            int size = is.available();</span>
+<span class="s3">//            byte[] buffer = new byte[size];</span>
+<span class="s3">//            is.read(buffer);</span>
+<span class="s3">//            is.close();</span>
+<span class="s3">//            json = new String(buffer, StandardCharsets.UTF_8);</span>
+<span class="s3">//</span>
+<span class="s3">//        } catch (IOException ex) {</span>
+<span class="s3">//            ex.printStackTrace();</span>
+<span class="s3">//            return null;</span>
+<span class="s3">//        }</span>
+<span class="s3">//        return json;</span>
+<span class="s3">//    }</span>
+
+    <span class="s0">public </span><span class="s1">String readJSONFromAsset() {</span>
+        <span class="s1">String json</span><span class="s0">;</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">InputStream is = getAssets().open(</span><span class="s4">&quot;recipes.json&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">int </span><span class="s1">size = is.available()</span><span class="s0">;</span>
+            <span class="s0">byte</span><span class="s1">[] buffer = </span><span class="s0">new byte</span><span class="s1">[size]</span><span class="s0">;</span>
+            <span class="s1">is.read(buffer)</span><span class="s0">;</span>
+            <span class="s1">is.close()</span><span class="s0">;</span>
+            <span class="s1">json = </span><span class="s0">new </span><span class="s1">String(buffer</span><span class="s0">, </span><span class="s1">StandardCharsets.UTF_8)</span><span class="s0">;</span>
+
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(IOException ex) {</span>
+            <span class="s1">ex.printStackTrace()</span><span class="s0">;</span>
+            <span class="s0">return null;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">json</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">FindARecipe(View view) {</span>
+        <span class="s1">setContentView(R.layout.findarecipe)</span><span class="s0">;</span>
+        <span class="s1">TextView text = findViewById(R.id.recipeFinder)</span><span class="s0">;</span>
+        <span class="s1">text.setMinWidth(width / </span><span class="s2">3</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s3">//  TextView textview = findViewById(R.id.recipeFinder2);</span>
+        <span class="s3">//  textview.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">Add(View view) {</span>
+        <span class="s1">EditText qu = findViewById(R.id.enterquantity)</span><span class="s0">;</span>
+        <span class="s1">EditText ed = findViewById(R.id.ingredient)</span><span class="s0">;</span>
+
+        <span class="s1">String item = getString(ed)</span><span class="s0">;</span>
+        <span class="s1">String qty = getString(qu)</span><span class="s0">;</span>
+
+        <span class="s1">LinearLayout linearlayout = findViewById(R.id.linearlayout)</span><span class="s0">;</span>
+        <span class="s1">LinearLayout linearlayout2 = findViewById(R.id.linearlayout2)</span><span class="s0">;</span>
+        <span class="s1">TextView text = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">TextView text2 = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s1">text.setText(getString(ed))</span><span class="s0">;</span>
+        <span class="s1">text.setId(counter)</span><span class="s0">;</span>
+        <span class="s1">text.setX(</span><span class="s2">30</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">text.setY(</span><span class="s2">100 </span><span class="s1">+ </span><span class="s2">10 </span><span class="s1">* counter)</span><span class="s0">;</span>
+        <span class="s1">text.setVisibility(View.VISIBLE)</span><span class="s0">;</span>
+        <span class="s1">text.setTextSize(</span><span class="s2">20</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">text.setTextColor(Color.BLACK)</span><span class="s0">;</span>
+        <span class="s1">linearlayout2.addView(text)</span><span class="s0">;</span>
+
+        <span class="s1">text2.setText(getString(qu))</span><span class="s0">;</span>
+        <span class="s1">text2.setId(counter)</span><span class="s0">;</span>
+        <span class="s1">text2.setX(</span><span class="s2">80</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">text2.setY(</span><span class="s2">100 </span><span class="s1">+ </span><span class="s2">10 </span><span class="s1">* counter)</span><span class="s0">;</span>
+        <span class="s1">text2.setVisibility(View.VISIBLE)</span><span class="s0">;</span>
+        <span class="s1">text2.setTextSize(</span><span class="s2">20</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">text2.setTextColor(Color.BLACK)</span><span class="s0">;</span>
+        <span class="s1">linearlayout.addView(text2)</span><span class="s0">;</span>
+
+
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">i &lt; </span><span class="s2">20</span><span class="s0">; </span><span class="s1">i++) {</span>
+            <span class="s0">int </span><span class="s1">j = </span><span class="s2">0</span><span class="s0">;</span>
+            <span class="s0">while </span><span class="s1">(recipes[i][</span><span class="s2">0</span><span class="s1">][j] != </span><span class="s0">null</span><span class="s1">) {</span>
+
+
+                <span class="s0">if </span><span class="s1">(item.equalsIgnoreCase(recipes[i][</span><span class="s2">0</span><span class="s1">][j])) {</span>
+                    <span class="s1">recipes[i][</span><span class="s2">2</span><span class="s1">][j] = qty</span><span class="s0">;</span>
+                    <span class="s0">int </span><span class="s1">percent = Integer.parseInt(qty) * </span><span class="s2">100 </span><span class="s1">/ Integer.parseInt(recipes[i][</span><span class="s2">1</span><span class="s1">][j])</span><span class="s0">;</span>
+                    <span class="s0">if </span><span class="s1">(percent &gt; </span><span class="s2">100</span><span class="s1">) {</span>
+                        <span class="s1">percent = </span><span class="s2">100</span><span class="s0">;</span>
+
+                    <span class="s1">}</span>
+                    <span class="s1">recipes[i][</span><span class="s2">3</span><span class="s1">][j] = String.valueOf(percent)</span><span class="s0">;</span>
+
+                <span class="s1">}</span>
+
+
+                <span class="s1">j++</span><span class="s0">;</span>
+            <span class="s1">}</span>
+
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getString(@NonNull EditText ed) {</span>
+        <span class="s0">return </span><span class="s1">ed.getText().toString()</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+    <span class="s1">@SuppressLint(</span><span class="s4">&quot;ResourceType&quot;</span><span class="s1">)</span>
+    <span class="s0">public void </span><span class="s1">Enter(View view) {</span>
+
+        <span class="s0">int </span><span class="s1">height = </span><span class="s0">this</span><span class="s1">.getResources().getDisplayMetrics().heightPixels</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">width = </span><span class="s0">this</span><span class="s1">.getResources().getDisplayMetrics().widthPixels</span><span class="s0">;</span>
+
+        <span class="s1">setContentView(R.layout.recipe)</span><span class="s0">;</span>
+
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">i &lt; </span><span class="s2">20</span><span class="s0">; </span><span class="s1">i++) {</span>
+            <span class="s0">int </span><span class="s1">j = </span><span class="s2">0</span><span class="s0">;</span>
+            <span class="s0">double </span><span class="s1">total = </span><span class="s2">0.0</span><span class="s0">;</span>
+            <span class="s0">while </span><span class="s1">(recipes[i][</span><span class="s2">0</span><span class="s1">][j] != </span><span class="s0">null</span><span class="s1">) {</span>
+
+                <span class="s0">if </span><span class="s1">(recipes[i][</span><span class="s2">3</span><span class="s1">][j] == </span><span class="s0">null</span><span class="s1">) {</span>
+                    <span class="s1">recipes[i][</span><span class="s2">3</span><span class="s1">][j] = </span><span class="s4">&quot;0&quot;</span><span class="s0">;</span>
+                <span class="s1">}</span>
+                <span class="s1">total = total + Integer.parseInt(recipes[i][</span><span class="s2">3</span><span class="s1">][j])</span><span class="s0">;</span>
+                <span class="s1">j++</span><span class="s0">;</span>
+
+
+            <span class="s1">}</span>
+            <span class="s1">percent[</span><span class="s2">0</span><span class="s1">][i] = i</span><span class="s0">;</span>
+
+            <span class="s1">percent[</span><span class="s2">1</span><span class="s1">][i] = (</span><span class="s0">int</span><span class="s1">) Math.round(total / j)</span><span class="s0">;</span>
+
+        <span class="s1">}</span>
+
+        <span class="s0">int</span><span class="s1">[] array = </span><span class="s0">new int</span><span class="s1">[</span><span class="s2">20</span><span class="s1">]</span><span class="s0">;</span>
+        <span class="s1">GridLayout grid = findViewById(R.id.gridLayout)</span><span class="s0">;</span>
+
+        <span class="s1">System.arraycopy(percent[</span><span class="s2">1</span><span class="s1">]</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s1">array</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">20</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Arrays.sort(</span><span class="s0">new int</span><span class="s1">[][]{array}</span><span class="s0">, </span><span class="s1">Collections.reverseOrder())</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">x = </span><span class="s2">0</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">rowcount = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">rowcount &lt; </span><span class="s2">10</span><span class="s0">; </span><span class="s1">rowcount++) {</span>
+            <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">colcount = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">colcount &lt; </span><span class="s2">2</span><span class="s0">; </span><span class="s1">colcount++) {</span>
+
+                <span class="s1">CardView card = </span><span class="s0">new </span><span class="s1">CardView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">card.setId(x)</span><span class="s0">;</span>
+                <span class="s1">card.setRadius(</span><span class="s2">10</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">card.setCardElevation(</span><span class="s2">10</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">card.setClickable(</span><span class="s0">true</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">card.callOnClick()</span><span class="s0">;</span>
+                <span class="s1">GridLayout.Spec row = GridLayout.spec(rowcount)</span><span class="s0">;</span>
+                <span class="s1">GridLayout.Spec col = GridLayout.spec(colcount)</span><span class="s0">;</span>
+                <span class="s1">grid.getUseDefaultMargins()</span><span class="s0">;</span>
+                <span class="s1">GridLayout.LayoutParams gridP = </span><span class="s0">new </span><span class="s1">GridLayout.LayoutParams(row</span><span class="s0">, </span><span class="s1">col)</span><span class="s0">;</span>
+                <span class="s1">card.setMinimumWidth((width - </span><span class="s2">100</span><span class="s1">) / </span><span class="s2">2</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">card.setUseCompatPadding(</span><span class="s0">true</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">card.setMinimumHeight((height - </span><span class="s2">50</span><span class="s1">) / </span><span class="s2">3</span><span class="s1">)</span><span class="s0">;</span>
+
+<span class="s3">//                System.out.println(colcount);</span>
+                <span class="s0">if </span><span class="s1">(colcount == </span><span class="s2">1</span><span class="s1">) {</span>
+
+                    <span class="s1">card.setLeft((width / </span><span class="s2">2</span><span class="s1">) + </span><span class="s2">300</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">}</span>
+                <span class="s3">// grid.setBackgroundResource(R.drawable.background);</span>
+                <span class="s1">card.setPadding(</span><span class="s2">100</span><span class="s0">, </span><span class="s2">100</span><span class="s0">, </span><span class="s2">100</span><span class="s0">, </span><span class="s2">100</span><span class="s1">)</span><span class="s0">;</span>
+
+                <span class="s1">card.setBackgroundResource(R.drawable.background)</span><span class="s0">;</span>
+                <span class="s1">grid.addView(card</span><span class="s0">, </span><span class="s1">gridP)</span><span class="s0">;</span>
+
+                <span class="s1">LinearLayout layout = </span><span class="s0">new </span><span class="s1">LinearLayout(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">layout.setOrientation(LinearLayout.VERTICAL)</span><span class="s0">;</span>
+
+                <span class="s1">TextView text = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">text.setTextColor(R.color.black)</span><span class="s0">;</span>
+
+                <span class="s1">text.setWidth((width - </span><span class="s2">200</span><span class="s1">) / </span><span class="s2">2</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER)</span><span class="s0">;</span>
+                <span class="s1">text.setGravity(Gravity.CENTER)</span><span class="s0">;</span>
+                <span class="s1">text.setTextSize(</span><span class="s2">25</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">System.out.println(</span><span class="s4">&quot;percent &quot; </span><span class="s1">+ percent[</span><span class="s2">0</span><span class="s1">][x])</span><span class="s0">;</span>
+                <span class="s1">text.setText(recipenames[percent[</span><span class="s2">0</span><span class="s1">][x]])</span><span class="s0">;</span>
+                <span class="s1">text.setPadding(</span><span class="s2">10</span><span class="s0">, </span><span class="s2">10</span><span class="s0">, </span><span class="s2">10</span><span class="s0">, </span><span class="s2">10</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">layout.addView(text)</span><span class="s0">;</span>
+                <span class="s1">TextView p = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">p.setMaxWidth((width - </span><span class="s2">300</span><span class="s1">) / </span><span class="s2">2</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">p.setTextAlignment(View.TEXT_ALIGNMENT_CENTER)</span><span class="s0">;</span>
+                <span class="s1">p.setGravity(Gravity.CENTER)</span><span class="s0">;</span>
+                <span class="s1">p.setTextSize(</span><span class="s2">25</span><span class="s1">)</span><span class="s0">;</span>
+
+                <span class="s1">p.setText(String.valueOf(percent[</span><span class="s2">1</span><span class="s1">][x]))</span><span class="s0">;</span>
+
+
+                <span class="s1">layout.addView(p)</span><span class="s0">;</span>
+
+
+                <span class="s1">card.addView(layout)</span><span class="s0">;</span>
+                <span class="s1">x++</span><span class="s0">;</span>
+                <span class="s0">int </span><span class="s1">finalX = x - </span><span class="s2">1</span><span class="s0">;</span>
+
+                <span class="s3">//yee = finalX;</span>
+                <span class="s1">card.setOnClickListener(view1 -&gt; {</span>
+                            <span class="s1">yee = finalX</span><span class="s0">;</span>
+                            <span class="s1">id = yee + </span><span class="s2">1</span><span class="s0">;</span>
+                            <span class="s1">setContentView(R.layout.recipescreen)</span><span class="s0">;</span>
+                            <span class="s1">ImageButton yo = findViewById(R.id.imageButton4)</span><span class="s0">;</span>
+                            <span class="s1">LinearLayout Ingredientlist = findViewById(R.id.ingredientlist)</span><span class="s0">;</span>
+                            <span class="s1">LinearLayout qtylist = findViewById(R.id.qtylist)</span><span class="s0">;</span>
+                            <span class="s1">LinearLayout method = findViewById(R.id.method)</span><span class="s0">;</span>
+                            <span class="s1">JSONArray jArray = </span><span class="s0">null;</span>
+                            <span class="s0">try </span><span class="s1">{</span>
+                                <span class="s1">jArray = </span><span class="s0">new </span><span class="s1">JSONArray(readJSONFromAsset())</span><span class="s0">;</span>
+
+                                <span class="s1">String recipeName = jArray.getJSONObject(finalX).getString(</span><span class="s4">&quot;recipeName&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                                <span class="s1">JSONArray ingredients = jArray.getJSONObject(finalX).getJSONArray(</span><span class="s4">&quot;recipeIngredients&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                                <span class="s1">JSONArray quantities = jArray.getJSONObject(finalX).getJSONArray(</span><span class="s4">&quot;displayqty&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                                <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">j = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">j &lt; ingredients.length()</span><span class="s0">; </span><span class="s1">j++) {</span>
+                                    <span class="s1">String ingredient = ingredients.getString(j)</span><span class="s0">;</span>
+                                    <span class="s1">TextView textView = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+                                    <span class="s3">//        textView.setBackgroundResource(R.drawable.background);</span>
+                                    <span class="s1">textView.setTextSize(</span><span class="s2">20</span><span class="s1">)</span><span class="s0">;</span>
+                                    <span class="s1">textView.setText(ingredient)</span><span class="s0">;</span>
+                                    <span class="s1">Ingredientlist.addView(textView)</span><span class="s0">;</span>
+                                    <span class="s1">TextView qtytext = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+                                    <span class="s1">qtytext.setTextSize(</span><span class="s2">20</span><span class="s1">)</span><span class="s0">;</span>
+                                    <span class="s3">//        qtytext.setBackgroundResource(R.drawable.background);</span>
+
+                                    <span class="s1">String quantity = quantities.getString(j)</span><span class="s0">;</span>
+                                    <span class="s1">qtytext.setText(quantity)</span><span class="s0">;</span>
+                                    <span class="s1">qtylist.addView(qtytext)</span><span class="s0">;</span>
+                                <span class="s1">}</span>
+                                <span class="s1">JSONArray methodarray = jArray.getJSONObject(finalX).getJSONArray(</span><span class="s4">&quot;method&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                                <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">j = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">j &lt; methodarray.length()</span><span class="s0">; </span><span class="s1">j++) {</span>
+<span class="s3">//                                method.setPadding(20, 20, 20, 40);</span>
+                                    <span class="s1">String methodstep = methodarray.getString(j)</span><span class="s0">;</span>
+                                    <span class="s1">TextView textView = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+                                    <span class="s1">textView.setTextSize(</span><span class="s2">20</span><span class="s1">)</span><span class="s0">;</span>
+                                    <span class="s1">textView.setText(methodstep)</span><span class="s0">;</span>
+<span class="s3">//                                textView.setPadding(10,10,10,10);</span>
+                                    <span class="s1">method.addView(textView)</span><span class="s0">;</span>
+                                <span class="s1">}</span>
+                                <span class="s1">TextView title = findViewById(R.id.recipeName)</span><span class="s0">;</span>
+                                <span class="s1">title.setText(recipeName)</span><span class="s0">;</span>
+
+                            <span class="s1">} </span><span class="s0">catch </span><span class="s1">(JSONException e) {</span>
+                                <span class="s1">e.printStackTrace()</span><span class="s0">;</span>
+
+
+                                <span class="s1">yo.bringToFront()</span><span class="s0">;</span>
+
+
+                            <span class="s1">}</span>
+                        <span class="s1">}</span>
+
+                <span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+
+    <span class="s0">public void </span><span class="s1">AddToBook(View view) {</span>
+        <span class="s1">buttoncheck = </span><span class="s2">1</span><span class="s0">;</span>
+<span class="s3">//        System.out.println(&quot;AddToBook&quot;);</span>
+        <span class="s1">count++</span><span class="s0">;</span>
+        <span class="s1">bookentries++</span><span class="s0">;</span>
+        <span class="s1">cards++</span><span class="s0">;</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s3">// JSONArray bookArray = new JSONArray(readJSONFromAsset2());</span>
+            <span class="s1">JSONObject obj = </span><span class="s0">new </span><span class="s1">JSONObject()</span><span class="s0">;</span>
+            <span class="s1">obj.put(</span><span class="s4">&quot;recipeName&quot;</span><span class="s0">, </span><span class="s1">recipenames[yee])</span><span class="s0">;</span>
+<span class="s3">//            System.out.println(&quot;recipe name: &quot; + recipenames[yee]);</span>
+            <span class="s1">obj.put(</span><span class="s4">&quot;recipeId&quot;</span><span class="s0">, </span><span class="s1">id)</span><span class="s0">;</span>
+<span class="s3">//            System.out.println(&quot;recipeId: &quot; + id);</span>
+<span class="s3">//            // System.out.println(recipenames[yee]);</span>
+
+            <span class="s1">JSONArray ingredients = </span><span class="s0">new </span><span class="s1">JSONArray()</span><span class="s0">;</span>
+            <span class="s3">//    JSONObject ingredientobj = new JSONObject();</span>
+
+            <span class="s0">int </span><span class="s1">ingredientlist = recipes[yee][</span><span class="s2">0</span><span class="s1">].length</span><span class="s0">;</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;ingredient list &quot; </span><span class="s1">+ ingredientlist)</span><span class="s0">;</span>
+            <span class="s1">JSONObject ingredient = </span><span class="s0">new </span><span class="s1">JSONObject()</span><span class="s0">;</span>
+<span class="s3">//            System.out.println(ingredientlist);</span>
+            <span class="s3">// adding ingredeints</span>
+            <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">counter3 = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">counter3 &lt; recipes[yee][</span><span class="s2">0</span><span class="s1">].length</span><span class="s0">; </span><span class="s1">counter3++) {</span>
+<span class="s3">//                System.out.println(&quot;book[yee][0][counter3] &quot; + book[yee][0][counter3]);</span>
+<span class="s3">//                System.out.println(&quot;recipes[yee][0][counter3] &quot; + recipes[yee][0][counter3]);</span>
+                <span class="s0">if </span><span class="s1">(recipes[yee][</span><span class="s2">0</span><span class="s1">][counter3] != </span><span class="s0">null</span><span class="s1">) {</span>
+                    <span class="s3">//  System.out.println(&quot;inside while&quot;);</span>
+                    <span class="s1">book[yee][</span><span class="s2">0</span><span class="s1">][counter3] = recipes[yee][</span><span class="s2">0</span><span class="s1">][counter3]</span><span class="s0">;</span>
+                    <span class="s1">ingredient.put(</span><span class="s4">&quot;recipeIngredients&quot;</span><span class="s0">, </span><span class="s1">recipes[yee][</span><span class="s2">0</span><span class="s1">][counter3])</span><span class="s0">;</span>
+<span class="s3">//                System.out.println(&quot;recipe ingredient: &quot; + recipes[yee][0][counter3]);</span>
+                    <span class="s1">ingredients.put(recipes[yee][</span><span class="s2">0</span><span class="s1">][counter3])</span><span class="s0">;</span>
+<span class="s3">//                    System.out.println(&quot;ingredients: &quot; + ingredients);</span>
+                <span class="s1">}</span>
+
+
+<span class="s3">//                System.out.println(cards);</span>
+                <span class="s1">bookRecipeNames[cards - </span><span class="s2">1</span><span class="s1">] = recipenames[yee]</span><span class="s0">;</span>
+            <span class="s1">}</span>
+            <span class="s1">obj.put(</span><span class="s4">&quot;recipeIngredients&quot;</span><span class="s0">, </span><span class="s1">ingredients)</span><span class="s0">;</span>
+            <span class="s1">bookArray.put(obj)</span><span class="s0">;</span>
+            <span class="s1">System.out.println(bookArray)</span><span class="s0">;</span>
+            <span class="s0">try </span><span class="s1">{</span>
+                <span class="s1">OutputStreamWriter outputStreamWriter = </span><span class="s0">new </span><span class="s1">OutputStreamWriter(openFileOutput(</span><span class="s4">&quot;book.json&quot;</span><span class="s0">, </span><span class="s1">MODE_PRIVATE))</span><span class="s0">;</span>
+                <span class="s1">outputStreamWriter.write(String.valueOf(bookArray))</span><span class="s0">;</span>
+
+                <span class="s1">outputStreamWriter.close()</span><span class="s0">;</span>
+            <span class="s1">} </span><span class="s0">catch </span><span class="s1">(IOException e) {</span>
+            <span class="s1">}</span>
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(JSONException e) {</span>
+            <span class="s1">e.printStackTrace()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s1">AddedToBook(view)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+
+    <span class="s0">public void </span><span class="s1">BacktoRecipes(View view) {</span>
+        <span class="s1">setContentView(R.layout.recipe)</span><span class="s0">;</span>
+        <span class="s1">Enter(view)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">BacktoMain(View view) {</span>
+        <span class="s1">setContentView(R.layout.mainscreen)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">viewBook(View view) {</span>
+<span class="s3">//        System.out.println(&quot;viewBook&quot;);</span>
+        <span class="s1">setContentView(R.layout.viewbook)</span><span class="s0">;</span>
+        <span class="s1">ImageButton button = findViewById(R.id.BackFromBook)</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(buttoncheck == </span><span class="s2">1</span><span class="s1">) {</span>
+            <span class="s1">button.setOnClickListener(view1 -&gt; setContentView(R.layout.recipe))</span><span class="s0">;</span>
+
+
+        <span class="s1">}</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">String[] bookentry = </span><span class="s0">new </span><span class="s1">String[</span><span class="s2">100</span><span class="s1">]</span><span class="s0">;</span>
+            <span class="s1">System.out.println(bookentries)</span><span class="s0">;</span>
+            <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">i &lt; bookentries</span><span class="s0">; </span><span class="s1">++i) {</span>
+                <span class="s1">String name = bookArray.getJSONObject(i).getString(</span><span class="s4">&quot;recipeName&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+                <span class="s1">bookentry[i] = name</span><span class="s0">;</span>
+                <span class="s1">bookRecipeNames[i] = name</span><span class="s0">;</span>
+            <span class="s1">}</span>
+
+
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(JSONException e) {</span>
+            <span class="s1">e.printStackTrace()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s1">setContentView(R.layout.viewbook)</span><span class="s0">;</span>
+        <span class="s1">TextView textview = findViewById(R.id.textView12)</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(bookentries == </span><span class="s2">0</span><span class="s1">) {</span>
+            <span class="s1">textview.setText(</span><span class="s4">&quot;There are no entries in your book&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s1">GridLayout grid = findViewById(R.id.grid)</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">column = </span><span class="s2">0</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">row = </span><span class="s2">0</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">x = </span><span class="s2">0</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(cards = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">cards &lt; bookentries</span><span class="s0">; </span><span class="s1">cards++) {</span>
+
+            <span class="s1">CardView bookcard = </span><span class="s0">new </span><span class="s1">CardView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s3">// bookcard.setId(x);</span>
+            <span class="s1">bookcard.setRight(</span><span class="s2">200</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookcard.setLeft(</span><span class="s2">100</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookcard.setRadius(</span><span class="s2">10</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookcard.setCardElevation(</span><span class="s2">10</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookcard.setClickable(</span><span class="s0">true</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookcard.callOnClick()</span><span class="s0">;</span>
+            <span class="s1">GridLayout.Spec ro = GridLayout.spec(row)</span><span class="s0">;</span>
+<span class="s3">//            System.out.println(&quot;row: &quot; + row);</span>
+            <span class="s1">GridLayout.Spec col = GridLayout.spec(column)</span><span class="s0">;</span>
+<span class="s3">//            System.out.println(&quot; column: &quot; + column);</span>
+            <span class="s3">//   grid.getUseDefaultMargins();</span>
+            <span class="s1">GridLayout.LayoutParams gridpos = </span><span class="s0">new </span><span class="s1">GridLayout.LayoutParams(ro</span><span class="s0">, </span><span class="s1">col)</span><span class="s0">;</span>
+            <span class="s1">bookcard.setMinimumWidth((width - </span><span class="s2">100</span><span class="s1">) / </span><span class="s2">2</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookcard.setUseCompatPadding(</span><span class="s0">true</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookcard.setMinimumHeight((height - </span><span class="s2">50</span><span class="s1">) / </span><span class="s2">3</span><span class="s1">)</span><span class="s0">;</span>
+
+
+            <span class="s1">bookcard.setPadding(</span><span class="s2">100</span><span class="s0">, </span><span class="s2">100</span><span class="s0">, </span><span class="s2">100</span><span class="s0">, </span><span class="s2">100</span><span class="s1">)</span><span class="s0">;</span>
+
+            <span class="s1">bookcard.setBackgroundResource(R.drawable.background)</span><span class="s0">;</span>
+            <span class="s1">grid.addView(bookcard</span><span class="s0">, </span><span class="s1">gridpos)</span><span class="s0">;</span>
+            <span class="s1">TextView text = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">TextView p = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">text.setTextColor(getResources().getColor(R.color.black))</span><span class="s0">;</span>
+<span class="s3">//            System.out.println(&quot;book recipe name in added book mod&quot; + bookRecipeNames[cards]);</span>
+            <span class="s1">text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER)</span><span class="s0">;</span>
+            <span class="s1">text.setGravity(Gravity.CENTER)</span><span class="s0">;</span>
+            <span class="s1">text.setTextSize(</span><span class="s2">25</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">text.setText(bookRecipeNames[cards])</span><span class="s0">;</span>
+            <span class="s1">text.setMinimumWidth((width - </span><span class="s2">100</span><span class="s1">) / </span><span class="s2">2</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">text.setMinimumHeight((height - </span><span class="s2">40</span><span class="s1">) / </span><span class="s2">10</span><span class="s1">)</span><span class="s0">;</span>
+
+            <span class="s3">//     text.setBackgroundResource(R.drawable.background);</span>
+            <span class="s1">bookcard.addView(text)</span><span class="s0">;</span>
+            <span class="s1">text.setPadding(</span><span class="s2">10</span><span class="s0">, </span><span class="s2">10</span><span class="s0">, </span><span class="s2">10</span><span class="s0">, </span><span class="s2">10</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">column++</span><span class="s0">;</span>
+            <span class="s1">x++</span><span class="s0">;</span>
+            <span class="s0">if </span><span class="s1">(column == </span><span class="s2">2</span><span class="s1">) {</span>
+                <span class="s1">row++</span><span class="s0">;</span>
+                <span class="s1">column = </span><span class="s2">0</span><span class="s0">;</span>
+            <span class="s1">}</span>
+            <span class="s0">int </span><span class="s1">finalX = x - </span><span class="s2">1</span><span class="s0">;</span>
+            <span class="s1">bookcard.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+                <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                    <span class="s1">setContentView(R.layout.bookrecipe)</span><span class="s0">;</span>
+                    <span class="s1">TextView title = findViewById(R.id.bookrecipetitle)</span><span class="s0">;</span>
+                    <span class="s1">title.setText(bookRecipeNames[finalX])</span><span class="s0">;</span>
+
+                <span class="s1">}</span>
+            <span class="s1">})</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">AddedToBook(View view) {</span>
+<span class="s3">//        System.out.println(&quot;bookrecipenames1 &quot; + bookRecipeNames[1]);</span>
+<span class="s3">//        System.out.println(&quot;added to book&quot;);</span>
+
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">String[] bookentry = </span><span class="s0">new </span><span class="s1">String[</span><span class="s2">100</span><span class="s1">]</span><span class="s0">;</span>
+
+            <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">i &lt; bookentries</span><span class="s0">; </span><span class="s1">++i) {</span>
+                <span class="s0">try </span><span class="s1">{</span>
+                    <span class="s1">String recipename = bookArray.getJSONObject(i).getString(</span><span class="s4">&quot;recipeName&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">bookentry[i] = recipename</span><span class="s0">;</span>
+                    <span class="s1">bookRecipeNames[i] = recipename</span><span class="s0">;</span>
+                <span class="s1">} </span><span class="s0">catch </span><span class="s1">(Exception e) {</span>
+<span class="s3">//                    System.out.println(&quot;stupid&quot;);</span>
+                <span class="s1">}</span>
+
+<span class="s3">//                System.out.println(bookentry[i]);</span>
+
+                <span class="s1">JSONArray ingredients = bookArray.getJSONObject(i).getJSONArray(</span><span class="s4">&quot;recipeIngredients&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">JSONArray quantities = bookArray.getJSONObject(i).getJSONArray(</span><span class="s4">&quot;quantities&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">j = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">j &lt; ingredients.length()</span><span class="s0">; </span><span class="s1">j++) {</span>
+                    <span class="s1">String ingredient = ingredients.getString(j)</span><span class="s0">;</span>
+                    <span class="s1">book[i][</span><span class="s2">0</span><span class="s1">][j] = ingredient</span><span class="s0">;</span>
+<span class="s3">//                    System.out.println(&quot;(book[i][0][j] &quot; + book[i][0][j]);</span>
+                    <span class="s1">String quantity = quantities.getString(j)</span><span class="s0">;</span>
+                    <span class="s1">book[i][</span><span class="s2">1</span><span class="s1">][j] = quantity</span><span class="s0">;</span>
+<span class="s3">//                    System.out.println(&quot;book[i][1][j] &quot; + book[i][1][j]);</span>
+
+                <span class="s1">}</span>
+
+            <span class="s1">}</span>
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(JSONException e) {</span>
+            <span class="s1">e.printStackTrace()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s1">setContentView(R.layout.viewbook)</span><span class="s0">;</span>
+        <span class="s1">ImageButton button = findViewById(R.id.BackFromBook)</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(buttoncheck == </span><span class="s2">1</span><span class="s1">) {</span>
+
+            <span class="s1">button.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+                <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                    <span class="s1">setContentView(R.layout.recipe)</span><span class="s0">;</span>
+                    <span class="s1">Enter(view)</span><span class="s0">;</span>
+
+                <span class="s1">}</span>
+            <span class="s1">})</span><span class="s0">;</span>
+
+
+        <span class="s1">}</span>
+        <span class="s1">TextView textview = findViewById(R.id.textView12)</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(bookentries == </span><span class="s2">0</span><span class="s1">) {</span>
+            <span class="s1">textview.setText(</span><span class="s4">&quot;There are no entries in your book&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s1">GridLayout grid = findViewById(R.id.grid)</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">column = </span><span class="s2">0</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">row = </span><span class="s2">0</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">x = </span><span class="s2">0</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(cards = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">cards &lt; bookentries</span><span class="s0">; </span><span class="s1">cards++) {</span>
+
+            <span class="s1">CardView bookcard = </span><span class="s0">new </span><span class="s1">CardView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s3">// bookcard.setId(x);</span>
+            <span class="s1">bookcard.setRight(</span><span class="s2">200</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookcard.setLeft(</span><span class="s2">100</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookcard.setRadius(</span><span class="s2">10</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookcard.setCardElevation(</span><span class="s2">10</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookcard.setClickable(</span><span class="s0">true</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookcard.callOnClick()</span><span class="s0">;</span>
+            <span class="s1">GridLayout.Spec ro = GridLayout.spec(row)</span><span class="s0">;</span>
+<span class="s3">//            System.out.println(&quot;row: &quot; + row);</span>
+            <span class="s1">GridLayout.Spec col = GridLayout.spec(column)</span><span class="s0">;</span>
+            <span class="s1">GridLayout.LayoutParams gridpos = </span><span class="s0">new </span><span class="s1">GridLayout.LayoutParams(ro</span><span class="s0">, </span><span class="s1">col)</span><span class="s0">;</span>
+            <span class="s1">bookcard.setMinimumWidth((width - </span><span class="s2">100</span><span class="s1">) / </span><span class="s2">2</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookcard.setUseCompatPadding(</span><span class="s0">true</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">bookcard.setMinimumHeight((height - </span><span class="s2">50</span><span class="s1">) / </span><span class="s2">3</span><span class="s1">)</span><span class="s0">;</span>
+
+
+            <span class="s1">bookcard.setPadding(</span><span class="s2">100</span><span class="s0">, </span><span class="s2">100</span><span class="s0">, </span><span class="s2">100</span><span class="s0">, </span><span class="s2">100</span><span class="s1">)</span><span class="s0">;</span>
+
+            <span class="s1">bookcard.setBackgroundResource(R.drawable.background)</span><span class="s0">;</span>
+            <span class="s1">grid.addView(bookcard</span><span class="s0">, </span><span class="s1">gridpos)</span><span class="s0">;</span>
+            <span class="s1">TextView text = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">TextView p = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">text.setTextColor(getResources().getColor(R.color.black))</span><span class="s0">;</span>
+<span class="s3">//            System.out.println(&quot;book recipe name in added book mod&quot; + bookRecipeNames[cards]);</span>
+            <span class="s1">text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER)</span><span class="s0">;</span>
+            <span class="s1">text.setGravity(Gravity.CENTER)</span><span class="s0">;</span>
+            <span class="s1">text.setTextSize(</span><span class="s2">25</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">text.setText(bookRecipeNames[cards])</span><span class="s0">;</span>
+            <span class="s1">text.setMinimumWidth((width - </span><span class="s2">100</span><span class="s1">) / </span><span class="s2">2</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">text.setMinimumHeight((height - </span><span class="s2">40</span><span class="s1">) / </span><span class="s2">10</span><span class="s1">)</span><span class="s0">;</span>
+
+            <span class="s3">//     text.setBackgroundResource(R.drawable.background);</span>
+            <span class="s1">bookcard.addView(text)</span><span class="s0">;</span>
+            <span class="s1">text.setPadding(</span><span class="s2">10</span><span class="s0">, </span><span class="s2">10</span><span class="s0">, </span><span class="s2">10</span><span class="s0">, </span><span class="s2">10</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">column++</span><span class="s0">;</span>
+            <span class="s1">x++</span><span class="s0">;</span>
+            <span class="s0">if </span><span class="s1">(column == </span><span class="s2">2</span><span class="s1">) {</span>
+                <span class="s1">row++</span><span class="s0">;</span>
+                <span class="s1">column = </span><span class="s2">0</span><span class="s0">;</span>
+            <span class="s1">}</span>
+            <span class="s0">int </span><span class="s1">finalX = x - </span><span class="s2">1</span><span class="s0">;</span>
+            <span class="s1">bookcard.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+                <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                    <span class="s1">setContentView(R.layout.bookrecipe)</span><span class="s0">;</span>
+                    <span class="s1">TextView title = findViewById(R.id.bookrecipetitle)</span><span class="s0">;</span>
+                    <span class="s1">title.setText(bookRecipeNames[finalX])</span><span class="s0">;</span>
+
+                <span class="s1">}</span>
+            <span class="s1">})</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">BacktoBook(View view) {</span>
+        <span class="s1">AddedToBook(view)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">AddRecipe(View view) {</span>
+        <span class="s1">setContentView(R.layout.addrecipe)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+
+            <span class="s0">public void </span><span class="s1">AddIngredient(View view){</span>
+          <span class="s1">counter3++</span><span class="s0">;</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;add&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">LinearLayout layout = findViewById(R.id.addrecipelinear)</span><span class="s0">;</span>
+            <span class="s1">EditText ingredient = findViewById(R.id.AddIngredientBox)</span><span class="s0">;</span>
+            <span class="s1">EditText qty = findViewById(R.id.AddQtyBox)</span><span class="s0">;</span>
+            <span class="s1">TextView text = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">AddRecipeIngredients[counter3][</span><span class="s2">0</span><span class="s1">] = GetIngredient(ingredient)</span><span class="s0">;</span>
+            <span class="s1">AddRecipeIngredients[counter3][</span><span class="s2">1</span><span class="s1">] = GetQty(qty)</span><span class="s0">;</span>
+
+            <span class="s1">}</span>
+
+    <span class="s0">private </span><span class="s1">String GetQty(EditText qty) {</span>
+        <span class="s0">return </span><span class="s1">qty.getText().toString()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String GetIngredient(EditText ingredient){</span>
+            <span class="s0">return </span><span class="s1">ingredient.getText().toString()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+
+
+    <span class="s0">public void </span><span class="s1">ViewList(View view) {</span>
+        <span class="s1">setContentView(R.layout.shoppinglist)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">AddItem(View view) {</span>
+        <span class="s1">counter2++</span><span class="s0">;</span>
+        <span class="s1">EditText item = findViewById(R.id.item)</span><span class="s0">;</span>
+        <span class="s1">TextView itemstext = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">items[counter2] = String(item)</span><span class="s0">;</span>
+        <span class="s1">LinearLayout linearlayout2 = findViewById(R.id.linearlayout2)</span><span class="s0">;</span>
+        <span class="s1">itemstext.setText(String(item))</span><span class="s0">;</span>
+        <span class="s1">itemstext.setId(counter2)</span><span class="s0">;</span>
+        <span class="s1">itemstext.setX(</span><span class="s2">30</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">itemstext.setY(</span><span class="s2">180 </span><span class="s1">+ </span><span class="s2">10 </span><span class="s1">* counter2)</span><span class="s0">;</span>
+        <span class="s1">itemstext.setVisibility(View.VISIBLE)</span><span class="s0">;</span>
+        <span class="s1">itemstext.setTextSize(</span><span class="s2">20</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">itemstext.setTextColor(Color.BLACK)</span><span class="s0">;</span>
+        <span class="s1">linearlayout2.addView(itemstext)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String String(EditText item) {</span>
+        <span class="s0">return </span><span class="s1">item.getText().toString()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
