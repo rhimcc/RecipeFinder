@@ -82,8 +82,8 @@
 
     <EditText
         android:id="@+id/RecipeNameText"
-        android:layout_width="394dp"
-        android:layout_height="119dp"
+        android:layout_width="428dp"
+        android:layout_height="117dp"
         android:layout_marginBottom="8dp"
         android:background="@color/blue"
         android:backgroundTint="@color/blue"

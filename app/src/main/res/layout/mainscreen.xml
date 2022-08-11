@@ -26,8 +26,8 @@
     <TextView
 
         android:id="@+id/RecipeFinder"
-        android:layout_width="414dp"
-        android:layout_height="190dp"
+        android:layout_width="430dp"
+        android:layout_height="185dp"
         android:background="@color/blue"
 
         android:gravity="center"

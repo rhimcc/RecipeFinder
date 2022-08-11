@@ -420,5 +420,392 @@
       "4. Spray the wok with a little more oil. Add the onion and carrot and stir-fry for 2 minutes. Add the chilli, lemongrass, ginger and garlic and stir-fry for 1 minute or until aromatic. Add the capsicum, peas and 2 tablespoons water and stir-fry for 1 minute. Add the zucchini and vermicelli noodles and stir-fry for 1-2 minutes or until the vegetables are nearly tender.",
       "5. Add the sauce mixture and the chicken to the wok. Stir-fry for 1-2 minutes or until heated through. Serve topped with fresh basil leaves."
     ]
+  },
+  {
+    "recipeId": 11,
+    "recipeName": "Spaghetti bolognese",
+    "recipeIngredients": [
+      "Beef Mince",
+      "Tomato sauce",
+      "Spaghetti",
+      "Parmesan",
+      "Parsley"
+    ],
+    "quantities": [
+      "500",
+      "500",
+      "300",
+      "",
+      ""
+    ],
+    "displayqty": [
+      "500g",
+      "500g",
+      "300",
+      "(Serve)",
+      "(Serve)"
+    ],
+    "method": [
+      "1. Heat a large non-stick frying pan over medium-high heat. Add mince and cook, stirring to break up lumps, for 3 mins or until cooked through. Add pasta sauce and ½ cup (125ml) water. Reduce heat to low and simmer, stirring occasionally, for 10 mins or until sauce thickens slightly.",
+      "2. Meanwhile, bring a large pot of water to the boil over high heat. Add the spaghetti and cook, stirring often, for 8 mins or until tender but still firm to the bite. Drain, reserving ½ cup (125ml) of the cooking liquid.",
+      "3. Add the spaghetti to the sauce and toss to coat, adding enough reserved cooking liquid to moisten mixture as needed. Season with salt and pepper. Top with parmesan and parsley."
+    ]
+  },
+  {
+    "recipeId": 12,
+    "recipeName": "Apricot Chicken",
+    "recipeIngredients": [
+      "Olive oil",
+      "Chicken thigh",
+      "Onion",
+      "Celery",
+      "Carrots",
+      "Garlic cloves",
+      "Wholegrain Mustard",
+      "Chicken stock",
+      "Apricot nectar",
+      "Dried apricots",
+      "Cannellini Beans",
+      "Snow peas",
+      "Broccollini"
+    ],
+    "quantities": [
+      "10",
+      "600",
+      "1",
+      "2",
+      "2",
+      "2",
+      "6",
+      "125",
+      "250",
+      "35",
+      "400",
+      "",
+      ""
+    ],
+    "displayqty": [
+      "10mL",
+      "600g",
+      "1",
+      "2 sticks",
+      "2",
+      "2",
+      "6g",
+      "125mL",
+      "250mL",
+      "35g",
+      "400g",
+      "(Serve)",
+      "(Serve)"
+    ],
+    "method": [
+      "1. Preheat oven to 170C/ 150C fan forced. Heat half the oil in a large flameproof casserole dish over high heat. Cook the chicken, in 2 batches, for 1-2 minutes each side or until golden. Transfer to a plate.",
+      "2. Heat remaining oil in same dish over medium heat. Add the onion, celery and carrot and cook, stirring, for 5 minutes or until softened. Add the garlic and cook, stirring, for 30 seconds or until fragrant. Return chicken to dish. Stir in the mustard, stock, apricot nectar and dried apricots and bring to the boil. Cover dish with a lid or foil.",
+      "3. Bake for 40 minutes, adding cannellini beans for last 10 minutes of cooking time. Serve with steamed snow peas and broccolini."
+    ]
+  },
+  {
+    "recipeId": 13,
+    "recipeName": "Strawberry Slice",
+    "recipeIngredients": [
+      "Strawberries",
+      "Caster Sugar",
+      "Iced Vovo Biscuits",
+      "Granita biscuits",
+      "Butter",
+      "Strawberry Jam",
+      "Cream cheese",
+      "Sour cream",
+      "Eggs"
+    ],
+    "quantities": [
+      "250",
+      "124",
+      "210",
+      "100",
+      "80",
+      "110",
+      "500",
+      "180",
+      "2"
+    ],
+    "displayqty": [
+      "250g",
+      "14g and 110g extra",
+      "210g",
+      "100g",
+      "80g, melted",
+      "110g",
+      "500g",
+      "180g",
+      "2"
+    ],
+    "method": [
+      "1. Grease a 20cm x 30cm (base measurement) lamington pan and line the base and 2 long sides with baking paper, allowing the sides to overhang. Place the strawberry and sugar in a medium saucepan over medium heat. Cook, stirring occasionally, for 10 mins or until the strawberry breaks down and mixture thickens slightly. Set aside to cool slightly. Transfer to a blender and blend until smooth.",
+      "2. Place the combined biscuit in a food processor and process until finely crushed. Add the butter and process until well combined. Press the biscuit mixture into base of the prepared pan. Place in the fridge for 30 mins to chill.",
+      "3. Preheat oven to 150C. Spread the jam evenly over the biscuit base.",
+      "4. Process the cream cheese, sour cream and extra sugar in a clean food processor until smooth. Add eggs and process until well combined. Add half the strawberry puree and process until well combined. Pour over biscuit base in pan. Drizzle with remaining strawberry puree. Swirl with a skewer to marble.",
+      "5. Bake for 30 mins or until just set. Turn oven off. Leave the cheesecake in oven, with the door ajar, to cool completely. Place in the fridge for 2 hours to chill. Cut into pieces to serve."
+    ]
+  },
+  {
+    "recipeId": 14,
+    "recipeName": "Rhubarb, pear and strawberry crumble",
+    "recipeIngredients": [
+      "Rhubarb",
+      "Beurre bosc pears",
+      "Lemon",
+      "Maple Syrup",
+      "Vanilla Extract",
+      "Strawberries",
+      "Caramel macadamia ice-cream",
+      "Coconut flour",
+      "Butter",
+      "Chia seeds",
+      "Shredded coconut",
+      "Macadamias"
+    ],
+    "quantities": [
+      "400",
+      "2",
+      "1",
+      "120",
+      "10",
+      "250",
+      "",
+      "70",
+      "50",
+      "20",
+      "25",
+      "80"
+    ],
+    "displayqty": [
+      "400g",
+      "2",
+      "1",
+      "2tbsp and 80mL",
+      "10mL",
+      "250g",
+      "(Serve)",
+      "70g",
+      "50g",
+      "20g",
+      "25g",
+      "80g"
+    ],
+    "method": [
+      "1. Preheat oven to 180C/160C fan forced. Combine the rhubarb, pear, lemon juice and rind, maple syrup and vanilla in a frying pan. Cover and simmer over medium-low heat for 5-10 minutes or until just softened. Remove from heat. Add strawberry, cover and set aside for 10-15 minutes, until the strawberries soften slightly. Transfer the fruit mixture to a 26cm ovenproof dish.",
+      "2. To make the crumble, place the flour in a bowl. Use your fingertips to rub in the butter until the mixture resembles coarse breadcrumbs. Add chia, coconut and macadamia. Stir to combine. Stir through 2 tbs maple syrup.",
+      "3. Scatter the crumble over the fruit. Bake for 20-25 minutes or until crumble is golden. Serve with ice-cream and drizzle over the remaining 2 tbs maple syrup."
+    ]
+  },
+  {
+    "recipeId": 15,
+    "recipeName": "Champorado (Chocolate Rice)",
+    "recipeIngredients": [
+      "Water",
+      "Glutinous rice",
+      "Tablea Chocolate",
+      "Sugar",
+      "Evaporated milk"
+    ],
+    "quantities": [
+      "1250",
+      "220",
+      "4",
+      "100",
+      "120"
+    ],
+    "displayqty": [
+      "1.25L",
+      "220g",
+      "4 pieces",
+      "100g",
+      "120mL"
+    ],
+    "method": [
+      "1. In a deep pot over medium heat, add water and bring to a boil. ",
+      "2. Add rice and stir to distribute. Lower heat and continue to cook, stirring occasionally, until rice begins to expand.",
+      "3. Add tablea and cook, stirring regularly, until chocolate has melted. Continue to cook until rice is translucent and liquid is reduced to desired consistency.",
+      "4. Add sugar and continue to cook, stirring regularly, until dissolved.",
+      "5. Ladle onto bowls, drizzle with evaporated milk and serve hot."
+    ]
+  },
+  {
+    "recipeId": 16,
+    "recipeName": "Creamy Pesto Chicken potato bake",
+    "recipeIngredients": [
+      "Butter",
+      "Chicken thigh fillets",
+      "Leek",
+      "Bacon",
+      "Plain flour",
+      "Pure cream",
+      "Pesto",
+      "Frozen peas",
+      "Potatoes",
+      "Olive oil spray",
+      "Parmesan",
+      "Basil"
+    ],
+    "quantities": [
+      "25",
+      "750",
+      "1",
+      "2",
+      "8",
+      "120",
+      "190",
+      "117",
+      "2",
+      "",
+      "30",
+      ""
+    ],
+    "displayqty": [
+      "25g",
+      "750g",
+      "1",
+      "2",
+      "8g",
+      "120mL",
+      "190g",
+      "117g",
+      "2",
+      "Spray",
+      "1/3 cup",
+      "(Serve)"
+    ],
+    "method": [
+      "1. Preheat oven to 200C/180C fan-forced. Melt butter in a frying pan over medium-high heat. Cook chicken, in 2 batches, for 2 to 3 minutes or until browned. Transfer to a 5cm-deep, 20cm x 26cm oval baking dish.",
+      "2. Add leek and bacon to pan. Cook, stirring, for 5 to 6 minutes, or until leek has softened. Add flour. Cook, stirring, for 1 minute. Gradually stir in cream and 1/3 cup pesto. Bring to a simmer. Remove from heat. Stir in peas. Season with salt and pepper. Carefully spoon pesto mixture over chicken.",
+      "3. Layer potato, slightly overlapping over chicken mixture. Spray with oil. Cover tightly with foil. Bake for 20 minutes or until potato is just tender. Uncover. Sprinkle with parmesan. Season with salt and pepper. Bake for a further 20 minutes or until golden and chicken is cooked through. Dollop with remaining pesto and sprinkle with basil leaves. Serve."
+
+    ]
+  },
+  {
+    "recipeId": 17,
+    "recipeName": "Fried Rice",
+    "recipeIngredients": [
+      "Peanut oil",
+      "Eggs",
+      "Bacon",
+      "Mixed vegetables",
+      "Ginger paste",
+      "Jasmine Rice",
+      "Soy sauce",
+      "Spring onion"
+
+    ],
+    "quantities": [
+      "10",
+      "2",
+      "4",
+      "180",
+      "48",
+      "500",
+      "40",
+      "1"
+    ],
+    "displayqty": [
+      "10mL",
+      "2",
+      "4",
+      "180g",
+      "48g",
+      "500g",
+      "40mL",
+      "1"
+    ],
+    "method": [
+"1. Heat a wok or large frying pan over high heat. Add oil and swirl to coat the base of the wok or pan. Add the egg and swirl to coat the base. Cook for 30 secs or until the egg is light golden underneath and just set. Turn onto a clean work surface. Roll egg into a log and thinly slice crossways. Transfer to a plate and cover to keep warm.",
+      "2. Add the bacon to the wok or pan. Cook, stirring, for 3 mins or until browned. Add the vegetables and ginger paste and cook, stirring, for 3 mins. Add the rice and cook, stirring, for 3 mins or until heated through.",
+      "3. Add the soy sauce to the rice mixture and toss to combine. Top with the egg and sprinkle with the spring onion. Season to serve."
+    ]
+  },
+  {
+    "recipeId": 18,
+    "recipeName": "Lemon brulee puddings",
+    "recipeIngredients": [
+      "Lemon",
+      "Vanilla rice pudding",
+      "Lemon curd",
+      "Caster sugar"
+    ],
+    "quantities": [
+      "1",
+      "",
+      "60",
+      "5"
+    ],
+    "displayqty": [
+      "1",
+      "",
+      "60g",
+      "5g"
+    ],
+    "method": [
+      "1. Use a small paring knife to scoop out the flesh from the lemon halves. Spoon bought vanilla rice pudding into the lemon shells until half-filled.",
+"2. Add 1 tsp bought lemon curd to each half then top with more rice pudding. Smooth the surface. Sprinkle the surface of each half with the caster sugar until coated generously. Use a cook’s blowtorch to melt and caramelise the sugar (or place under an oven grill – just cover the lemon skin with foil to stop it burning). Set aside for 5 minutes to cool slightly before serving."
+    ]
+  },
+  {
+    "recipeId": 19,
+    "recipeName": "Lamb chops",
+    "recipeIngredients": [
+      "Butter",
+      "Garlic Cloves",
+      "Rosemary leaves",
+      "Lamb loin chops"
+    ],
+    "quantities": [
+      "125",
+      "2",
+      "1.7",
+      "8"
+    ],
+    "displayqty": [
+      "125g",
+      "2",
+      "1tbsp",
+      "8"
+    ],
+    "method": [
+"1. Place butter in a small bowl. Use a fork to mash. Add garlic and rosemary and stir until combined. Place on a small piece of baking paper and shape into a log about 12cm long. Wrap log in baking paper. Place in the fridge to chill until firm. Cut into 12 slices.",
+      "2. Preheat the air fryer for 5 minutes at 200C. Spray lamb chops lightly with oil. Season. Arrange over base of air fryer basket in a single layer (see notes). Cook for 3 minutes each side for medium-rare (see notes). Top each chop wih half a slice of garlic butter. Close the air fryer for 1 minute until butter has melted (do not turn the air fryer on)."
+    ]
+  },
+  {
+    "recipeId": 20,
+    "recipeName": "Caramel blooming apples",
+    "recipeIngredients": [
+      "Red apples",
+      "Butter",
+      "Walnuts",
+      "Jersey Caramels",
+      "Ice-cream"
+    ],
+    "quantities": [
+      "4",
+      "60",
+      "25",
+      "4",
+      ""
+    ],
+    "displayqty": [
+      "4",
+      "60g",
+      "25g",
+      "4",
+      "(Serve)"
+    ],
+    "method": [
+      "1. Cut the tops from the apples then use a melon baller to scoop out the core without going through the base. Use a small sharp knife to score 2 circles into the cut side of the apples, going as deep as you can without cutting all the way through.",
+      "2. Make cuts down the side of the apples, keeping the base intact. Brush the cut sides of the apples with melted butter, allowing it to drizzle into the cuts. Air fry at 180C for 15 minutes.",
+      "3. Use tongs to transfer apples to a plate. Divide walnuts and caramel pieces among apple cavities. Brush each with more butter.",
+      "4. Cook apples for a further 10 minutes. Serve with ice-cream or double cream."
+
+    ]
   }
 ]

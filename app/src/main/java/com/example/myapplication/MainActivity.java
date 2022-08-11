@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     public static int co = 0;
     public static String[] recipenames = new String[20];
     String name = "";
-    String[][][] recipes = new String[20][4][20];
+    String[][][] recipes = new String[21][4][21];
     int[][] percent = new int[2][20];
     String[][][] book = new String[100][4][100];
     JSONArray bookArray = new JSONArray();
@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
     int bookentries = 0;
     int counter3 = 0;
     int buttoncheck = 0;
-    String[][][] anotherArray = new String[100][100][100];
     int stepcounter = 0;
   public static String[] steps = new String[100];
 
@@ -141,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 //            System.out.println(bookArray);
             JSONArray jArray = new JSONArray(readJSONFromAsset());
 
-            for (int i = 0; i < jArray.length(); ++i) {
+            for (int i = 0; i < 20; i++) {
                 String name = jArray.getJSONObject(i).getString("recipeName");
                 recipenames[i] = name;
                // System.out.println(recipenames[i]);
@@ -173,19 +172,6 @@ public class MainActivity extends AppCompatActivity {
 //                    System.out.println("stupid");
                 }
 
-//                System.out.println(bookentry[i]);
-
-//                JSONArray ingredients = bookArray.getJSONObject(i).getJSONArray("recipeIngredients");
-//                JSONArray quantities = bookArray.getJSONObject(i).getJSONArray("quantities");
-//                for (int j = 0; j < ingredients.length(); j++) {
-//                    String ingredient = ingredients.getString(j);
-//                    book[i][0][j] = ingredient;
-////                    System.out.println("(book[i][0][j] " + book[i][0][j]);
-//                    String quantity = quantities.getString(j);
-//                    book[i][1][j] = quantity;
-////                    System.out.println("book[i][1][j] " + book[i][1][j]);
-//
-//                }
 
             }
         } catch (JSONException e) {
@@ -219,79 +205,7 @@ public class MainActivity extends AppCompatActivity {
         return ret;
     }
 
-//        String line = null;
-//        String path = null;
-//        try {
-//            FileReader fileReader = new FileReader(bookfile);
-//            StringBuffer output = new StringBuffer();
-//            BufferedReader bufferedReader = new BufferedReader(fileReader);
-//            while ((line = bufferedReader.readLine()) != null) {
-//                output.append(line + "\n");
-//            }
-//            String response = output.toString();
-//            System.out.println("line: " + line);
-//
-////            String appendedString = line + "boo";
-////            System.out.println(appendedString);
-////            path = bookfile.getPath();
-//            FileWriter fileWriter = new FileWriter(bookfile);
-//            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-//            bufferedWriter.write("{}");
-//            System.out.println(bufferedWriter);
-//            bufferedWriter.close();
-//
-////            try {
-////                // InputStream is = bufferedReader.readLine();
-//////                int size = is.available();
-//////                byte[] buffer = new byte[size];
-//////                is.read(buffer);
-//////                is.close();
-//////                String json = new String(buffer, StandardCharsets.UTF_8);
-////
-//////            } catch (IOException ex) {
-//////                ex.printStackTrace();
-//////                return null;
-//////            }
-//            //            System.out.println(line3);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-////        System.out.println("no");
-//
-//        return path;
-//    }
-//        try {
-//            InputStream is = getAssets().open("recipes.json");
-//            int size = is.available();
-//            byte[] buffer = new byte[size];
-//            is.read(buffer);
-//            is.close();
-//            json = new String(buffer, StandardCharsets.UTF_8);
-//
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//            return null;
-//        }
-//
-//
-//    public String readJSONFromAsset2() {
-//        String json = null;
-//        try {
-//            InputStream is = getAssets().open("book.json");
-//            int size = is.available();
-//            byte[] buffer = new byte[size];
-//            is.read(buffer);
-//            is.close();
-//            json = new String(buffer, StandardCharsets.UTF_8);
-//
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//            return null;
-//        }
-//        return json;
-//    }
+
 
     public void Welcome(View view) {
         System.out.println("co " + co);
@@ -344,7 +258,11 @@ public class MainActivity extends AppCompatActivity {
         EditText ed = findViewById(R.id.ingredient);
 
         String item = getString(ed);
+
         String qty = getString(qu);
+        if (Integer.parseInt(qty) < 0){
+            qty = "0";
+        }
 
         LinearLayout linearlayout = findViewById(R.id.linearlayout);
         LinearLayout linearlayout2 = findViewById(R.id.linearlayout2);
@@ -356,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
         text.setX(30);
         text.setY(100 + 10 * counter);
         text.setVisibility(View.VISIBLE);
-        text.setTextSize(20);
+        text.setTextSize(15);
         text.setTextColor(Color.BLACK);
         linearlayout2.addView(text);
 
@@ -365,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
         text2.setX(80);
         text2.setY(100 + 10 * counter);
         text2.setVisibility(View.VISIBLE);
-        text2.setTextSize(20);
+        text2.setTextSize(15);
         text2.setTextColor(Color.BLACK);
         linearlayout.addView(text2);
 
@@ -373,7 +291,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 20; i++) {
             int j = 0;
             while (recipes[i][0][j] != null) {
-
 
                 if (item.equalsIgnoreCase(recipes[i][0][j])) {
                     recipes[i][2][j] = qty;
@@ -432,7 +349,7 @@ public class MainActivity extends AppCompatActivity {
         System.arraycopy(percent[1], 0, array, 0, 20);
         Arrays.sort(new int[][]{array}, Collections.reverseOrder());
         int x = 0;
-        for (int rowcount = 0; rowcount < 10; rowcount++) {
+        for (int rowcount = 0; rowcount < 5; rowcount++) {
             for (int colcount = 0; colcount < 2; colcount++) {
 
                 CardView card = new CardView(this);
@@ -469,9 +386,12 @@ public class MainActivity extends AppCompatActivity {
                 text.setWidth((width - 200) / 2);
                 text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 text.setGravity(Gravity.CENTER);
-                text.setTextSize(25);
+                text.setTextSize(15);
                 System.out.println("percent " + percent[0][x]);
+
                 text.setText(recipenames[percent[0][x]]);
+
+                System.out.println(recipenames[percent[0][x]]);
                 text.setTextColor(Color.BLACK);
                 text.setPadding(10, 10, 10, 10);
                 layout.addView(text);
@@ -480,7 +400,7 @@ public class MainActivity extends AppCompatActivity {
                 p.setTextColor(Color.BLACK);
                 p.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 p.setGravity(Gravity.CENTER);
-                p.setTextSize(25);
+                p.setTextSize(15);
 
                 p.setText(String.valueOf(percent[1][x]));
 
@@ -558,31 +478,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-//    private void Boop(View view) {
-//        System.out.println("boop");
-//        setContentView(R.layout.recipeinfo);
-//        LinearLayout bigvertical = findViewById(R.id.poo);
-//        LinearLayout horizontal = new LinearLayout(this);
-//        LinearLayout vertical = new LinearLayout(this);
-//
-//        LinearLayout ingredients = new LinearLayout(this);
-//        LinearLayout quantities = new LinearLayout(this);
-//        for (int i = 0; i < 100; i++){
-//            TextView ing = new TextView(this);
-//            TextView qty = new TextView(this);
-//            ing.setText("yuh");
-//            qty.setText("pp");
-//            ingredients.addView(ing);
-//            quantities.addView(qty);
-//
-//        }
-//
-//        horizontal.addView(ingredients);
-//        horizontal.addView(quantities);
-//        bigvertical.addView(horizontal);
-//        bigvertical.addView(vertical);
-//    }
 
     public void AddToBook(View view) {
         buttoncheck = 1;
@@ -703,10 +598,10 @@ public class MainActivity extends AppCompatActivity {
                 i++;
             }
 
-            for (i = 0; i < AddRecipeIngredients.length; i++){
-                System.out.println("add hrgiefdk " + AddRecipeIngredients[0][i]);
-            }
-            System.out.println(" length " + AddRecipeIngredients[0].length);
+//            for (i = 0; i < AddRecipeIngredients.length; i++){
+//                System.out.println("add hrgiefdk " + AddRecipeIngredients[0][i]);
+//            }
+//            System.out.println(" length " + AddRecipeIngredients[0].length);
 
             for (int counter3 = 0; counter3 < AddRecipeIngredients[0].length; counter3++) {
 //                System.out.println("book[yee][0][counter3] " + book[yee][0][counter3]);
@@ -834,7 +729,7 @@ public class MainActivity extends AppCompatActivity {
 //            System.out.println("book recipe name in added book mod" + bookRecipeNames[cards]);
             text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             text.setGravity(Gravity.CENTER);
-            text.setTextSize(25);
+            text.setTextSize(15);
             text.setText(bookRecipeNames[cards]);
             text.setMinimumWidth((width - 100) / 2);
             text.setMinimumHeight((height - 40) / 10);
@@ -958,115 +853,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void AddedToBook(View view) {
-//        System.out.println("bookrecipenames1 " + bookRecipeNames[1]);
-//        System.out.println("added to book");
-
-//        try {
-//            String[] bookentry = new String[100];
-//
-//            for (int i = 0; i < bookentries; ++i) {
-//                try {
-//                    String recipename = bookArray.getJSONObject(i).getString("recipeName");
-//                    bookentry[i] = recipename;
-//                    bookRecipeNames[i] = recipename;
-//                } catch (Exception e) {
-////                    System.out.println("stupid");
-//                }
-//
-////                System.out.println(bookentry[i]);
-//
-//                JSONArray ingredients = bookArray.getJSONObject(i).getJSONArray("recipeIngredients");
-//                JSONArray quantities = bookArray.getJSONObject(i).getJSONArray("quantities");
-//                for (int j = 0; j < ingredients.length(); j++) {
-//                    String ingredient = ingredients.getString(j);
-//                    book[i][0][j] = ingredient;
-////                    System.out.println("(book[i][0][j] " + book[i][0][j]);
-//                    String quantity = quantities.getString(j);
-//                    book[i][1][j] = quantity;
-////                    System.out.println("book[i][1][j] " + book[i][1][j]);
-//
-//                }
-//
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        setContentView(R.layout.viewbook);
         viewBook(view);
-//        ImageButton button = findViewById(R.id.BackFromBook);
-//        if (buttoncheck == 1) {
-//
-//            button.setOnClickListener(new View.OnClickListener() {
-//                public void onClick(View view) {
-//                    setContentView(R.layout.recipe);
-//                    Enter(view);
-//
-//                }
-//            });
-//
-//
-//        }
-//        TextView textview = findViewById(R.id.textView12);
-//        if (bookentries == 0) {
-//            textview.setText("There are no entries in your book");
-//        }
-//        GridLayout grid = findViewById(R.id.grid);
-//        int column = 0;
-//        int row = 0;
-//        int x = 0;
-//        for (cards = 0; cards < bookentries; cards++) {
-//
-//            CardView bookcard = new CardView(this);
-//            // bookcard.setId(x);
-//            bookcard.setRight(200);
-//            bookcard.setLeft(100);
-//            bookcard.setRadius(10);
-//            bookcard.setCardElevation(10);
-//            bookcard.setClickable(true);
-//            bookcard.callOnClick();
-//            GridLayout.Spec ro = GridLayout.spec(row);
-////            System.out.println("row: " + row);
-//            GridLayout.Spec col = GridLayout.spec(column);
-//            GridLayout.LayoutParams gridpos = new GridLayout.LayoutParams(ro, col);
-//            bookcard.setMinimumWidth((width - 100) / 2);
-//            bookcard.setUseCompatPadding(true);
-//            bookcard.setMinimumHeight((height - 50) / 3);
-//
-//
-//            bookcard.setPadding(100, 100, 100, 100);
-//
-//            bookcard.setBackgroundResource(R.drawable.background);
-//            grid.addView(bookcard, gridpos);
-//            TextView text = new TextView(this);
-//            TextView p = new TextView(this);
-//            text.setTextColor(getResources().getColor(R.color.black));
-////            System.out.println("book recipe name in added book mod" + bookRecipeNames[cards]);
-//            text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//            text.setGravity(Gravity.CENTER);
-//            text.setTextSize(25);
-//            text.setText(bookRecipeNames[cards]);
-//            text.setMinimumWidth((width - 100) / 2);
-//            text.setMinimumHeight((height - 40) / 10);
-//
-//            //     text.setBackgroundResource(R.drawable.background);
-//            bookcard.addView(text);
-//            text.setPadding(10, 10, 10, 10);
-//            column++;
-//            x++;
-//            if (column == 2) {
-//                row++;
-//                column = 0;
-//            }
-//            int finalX = x - 1;
-//            bookcard.setOnClickListener(new View.OnClickListener() {
-//                public void onClick(View view) {
-//                    setContentView(R.layout.bookrecipe);
-//                    TextView title = findViewById(R.id.textView11);
-//                    title.setText(bookRecipeNames[finalX]);
-//
-//                }
-//            });
-//        }
+
     }
 
     public void BacktoBook(View view) {
@@ -1144,54 +932,3 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-
-//    public void ViewList(View view) {
-//        setContentView(R.layout.shoppinglist);
-//
-//    }
-//    private String getShoppingList() {
-//        System.out.println("Height " + height);
-//        System.out.println("width " + width);
-//        String ret = "";
-//        InputStream inputStream;
-//        try {
-//            inputStream = this.openFileInput("List.json");
-//            System.out.println("yuh");
-//            if (inputStream != null) {
-//                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-//                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-//                String receiveString;
-//                StringBuilder stringBuilder = new StringBuilder();
-//
-//                while ((receiveString = bufferedReader.readLine()) != null) {
-//                    stringBuilder.append(receiveString);
-//                }
-//
-//                ret = stringBuilder.toString();
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return ret;
-//    }
-
-//    public void AddItem(View view) {
-//        counter2++;
-//        EditText item = findViewById(R.id.item);
-//        TextView itemstext = new TextView(this);
-//        items[counter2] = String(item);
-//        LinearLayout linearlayout2 = findViewById(R.id.linearlayout2);
-//        itemstext.setText(String(item));
-//        itemstext.setId(counter2);
-//        itemstext.setX(30);
-//        itemstext.setY(180 + 10 * counter2);
-//        itemstext.setVisibility(View.VISIBLE);
-//        itemstext.setTextSize(20);
-//        itemstext.setTextColor(Color.BLACK);
-//        linearlayout2.addView(itemstext);
-//    }
-//
-//    public String String(EditText item) {
-//        return item.getText().toString();
-//    }
-//}
